@@ -1,0 +1,466 @@
+++ pwd
++ AMSUsorc=/lfs/h1/ops/prod/packages/amsu_estimation.v1.3.0/sorc
++ source ../versions/build.ver
+++ export PrgEnv_intel_ver=8.1.0
+++ PrgEnv_intel_ver=8.1.0
+++ export intel_ver=19.1.3.304
+++ intel_ver=19.1.3.304
+++ export craype_ver=2.7.10
+++ craype_ver=2.7.10
+++ export bufr_ver=11.5.0
+++ bufr_ver=11.5.0
++ module reset
+++ /usr/share/lmod/lmod/libexec/lmod bash reset
+Resetting modules to system default. Reseting $MODULEPATH back to system default. All extra directories will be removed from $MODULEPATH.
++ eval 'CRAYPE_NETWORK_TARGET=ofi;' export 'CRAYPE_NETWORK_TARGET;' 'CRAY_CPU_TARGET=x86-rome;' export 'CRAY_CPU_TARGET;' 'CRAY_LMOD_CPU=x86-rome/1.0;' export 'CRAY_LMOD_CPU;' 'CRAY_LMOD_NET=ofi/1.0;' export 'CRAY_LMOD_NET;' unset 'ECFHOSTSDIR;' unset 'ECF_HOSTFILE;' unset 'ECF_PORT;' unset 'ECF_ROOT;' 'HPC_OPT=/apps/ops/prod/libs;' export 'HPC_OPT;' '__LMOD_REF_COUNT_LD_LIBRARY_PATH=/opt/cray/libfabric/1.11.0.0./lib64:1;' export '__LMOD_REF_COUNT_LD_LIBRARY_PATH;' 'LD_LIBRARY_PATH=/opt/cray/libfabric/1.11.0.0./lib64;' export 'LD_LIBRARY_PATH;' 'LMOD_FAMILY_CRAYPE_CPU=craype-x86-rome;' export 'LMOD_FAMILY_CRAYPE_CPU;' 'LMOD_FAMILY_CRAYPE_CPU_VERSION=false;' export 'LMOD_FAMILY_CRAYPE_CPU_VERSION;' 'LMOD_FAMILY_CRAYPE_NETWORK=craype-network-ofi;' export 'LMOD_FAMILY_CRAYPE_NETWORK;' 'LMOD_FAMILY_CRAYPE_NETWORK_VERSION=false;' export 'LMOD_FAMILY_CRAYPE_NETWORK_VERSION;' '__LMOD_REF_COUNT_LOADEDMODULES=craype-x86-rome:1\;libfabric/1.11.0.0.:1\;craype-network-ofi:1\;envvar/1.0:1;' export '__LMOD_REF_COUNT_LOADEDMODULES;' 'LOADEDMODULES=craype-x86-rome:libfabric/1.11.0.0.:craype-network-ofi:envvar/1.0;' export 'LOADEDMODULES;' 'MANPATH=/opt/cray/libfabric/1.11.0.0./share/man:/usr/share/lmod/lmod/share/man:/usr/share/man:/opt/pbs/share/man:/opt/clmgr/man:/opt/sgi/share/man:/opt/clmgr/share/man:/opt/clmgr/lib/cm-cli/man;' export 'MANPATH;' 'MODULEPATH=/opt/cray/pe/lmod/modulefiles/net/ofi/1.0:/opt/cray/pe/lmod/modulefiles/cpu/x86-rome/1.0:/usr/share/modules:/usr/share/Modules/\$MODULE_VERSION/modulefiles:/usr/share/modules/modulefiles:/usr/share/modulefiles/Linux:/usr/share/modulefiles/Core:/usr/share/lmod/lmod/modulefiles/Core:/opt/cray/pe/lmod/modulefiles/core:/opt/cray/pe/lmod/modulefiles/craype-targets/default:/apps/prod/lmodules/sys_core:/apps/ops/prod/nco/modulefiles/core:/apps/prod/lmodules/core:/opt/cray/modulefiles:/opt/modulefiles;' export 'MODULEPATH;' '__LMOD_REF_COUNT_PATH=/opt/cray/libfabric/1.11.0.0./bin:1\;/opt/clmgr/sbin:1\;/opt/clmgr/bin:1\;/opt/sgi/sbin:1\;/opt/sgi/bin:1\;/usr/local/bin:1\;/usr/bin:1\;/bin:2\;/usr/lib/mit/bin:1\;/usr/lib/mit/sbin:1\;/opt/pbs/bin:1\;/sbin:1;' export '__LMOD_REF_COUNT_PATH;' 'PATH=/opt/cray/libfabric/1.11.0.0./bin:/opt/clmgr/sbin:/opt/clmgr/bin:/opt/sgi/sbin:/opt/sgi/bin:/usr/local/bin:/usr/bin:/bin:/usr/lib/mit/bin:/usr/lib/mit/sbin:/opt/pbs/bin:/sbin;' export 'PATH;' 'PE_PRODUCT_LIST=CRAYPE_X86_ROME;' export 'PE_PRODUCT_LIST;' 'PKG_CONFIG_PATH=/opt/cray/libfabric/1.11.0.0./lib64/pkgconfig;' export 'PKG_CONFIG_PATH;' unset 'PRODMACHINEFILE;' unset '__LMOD_REF_COUNT_PYTHONPATH;' unset 'PYTHONPATH;' unset '__LMOD_REF_COUNT_QT_PLUGIN_PATH;' unset 'QT_PLUGIN_PATH;' '__LMOD_REF_COUNT__LMFILES_=/opt/cray/pe/lmod/modulefiles/craype-targets/default/craype-x86-rome.lua:1\;/opt/cray/modulefiles/libfabric/1.11.0.0.:1\;/opt/cray/pe/lmod/modulefiles/craype-targets/default/craype-network-ofi.lua:1\;/apps/prod/lmodules/sys_core/envvar/1.0:1;' export '__LMOD_REF_COUNT__LMFILES_;' '_LMFILES_=/opt/cray/pe/lmod/modulefiles/craype-targets/default/craype-x86-rome.lua:/opt/cray/modulefiles/libfabric/1.11.0.0.:/opt/cray/pe/lmod/modulefiles/craype-targets/default/craype-network-ofi.lua:/apps/prod/lmodules/sys_core/envvar/1.0;' export '_LMFILES_;' '_ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJNVHZlcnNpb24iXT0zLFsiY19yZWJ1aWxkVGltZSJdPWZhbHNlLFsiY19zaG9ydFRpbWUiXT1mYWxzZSxkZXB0aFQ9e30sZmFtaWx5PXtbImNyYXlwZV9jcHUiXT0iY3JheXBlLXg4Ni1yb21lIixbImNyYXlwZV9uZXR3b3JrIl09ImNyYXlwZS1uZXR3b3JrLW9maSIsfSxtVD17WyJjcmF5cGUtbmV0d29yay1vZmkiXT17WyJmbiJdPSIvb3B0L2NyYXkvcGUvbG1vZC9tb2R1bGVmaWxlcy9jcmF5cGUtdGFyZ2V0cy9kZWZhdWx0L2NyYXlwZS1uZXR3b3JrLW9maS5sdWEiLFsiZnVsbE5hbWUiXT0iY3JheXBlLW5ldHdvcmstb2ZpIixbImxvYWRPcmRlciJdPTMscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MSxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNl;' export '_ModuleTable001_;' '_ModuleTable002_=ck5hbWUiXT0iY3JheXBlLW5ldHdvcmstb2ZpIix9LFsiY3JheXBlLXg4Ni1yb21lIl09e1siZm4iXT0iL29wdC9jcmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvY3JheXBlLXRhcmdldHMvZGVmYXVsdC9jcmF5cGUteDg2LXJvbWUubHVhIixbImZ1bGxOYW1lIl09ImNyYXlwZS14ODYtcm9tZSIsWyJsb2FkT3JkZXIiXT0xLHByb3BUPXt9LFsic3RhY2tEZXB0aCJdPTEsWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09ImNyYXlwZS14ODYtcm9tZSIsfSxlbnZ2YXI9e1siZm4iXT0iL2FwcHMvcHJvZC9sbW9kdWxlcy9zeXNfY29yZS9lbnZ2YXIvMS4wIixbImZ1bGxOYW1lIl09ImVudnZhci8xLjAiLFsibG9hZE9yZGVyIl09NCxwcm9wVD17fSxbInN0YWNrRGVwdGgiXT0w;' export '_ModuleTable002_;' '_ModuleTable003_=LFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJlbnZ2YXIvMS4wIix9LGxpYmZhYnJpYz17WyJmbiJdPSIvb3B0L2NyYXkvbW9kdWxlZmlsZXMvbGliZmFicmljLzEuMTEuMC4wLiIsWyJmdWxsTmFtZSJdPSJsaWJmYWJyaWMvMS4xMS4wLjAuIixbImxvYWRPcmRlciJdPTIscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MixbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0ibGliZmFicmljIix9LH0sbXBhdGhBPXsiL29wdC9jcmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvbmV0L29maS8xLjAiLCIvb3B0L2NyYXkvcGUvbG1vZC9tb2R1bGVmaWxlcy9jcHUveDg2LXJvbWUvMS4wIiwiL3Vzci9zaGFyZS9tb2R1bGVzIiwiL3Vzci9zaGFyZS9Nb2R1bGVzLyRNT0RV;' export '_ModuleTable003_;' '_ModuleTable004_=TEVfVkVSU0lPTi9tb2R1bGVmaWxlcyIsIi91c3Ivc2hhcmUvbW9kdWxlcy9tb2R1bGVmaWxlcyIsIi91c3Ivc2hhcmUvbW9kdWxlZmlsZXMvTGludXgiLCIvdXNyL3NoYXJlL21vZHVsZWZpbGVzL0NvcmUiLCIvdXNyL3NoYXJlL2xtb2QvbG1vZC9tb2R1bGVmaWxlcy9Db3JlIiwiL29wdC9jcmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvY29yZSIsIi9vcHQvY3JheS9wZS9sbW9kL21vZHVsZWZpbGVzL2NyYXlwZS10YXJnZXRzL2RlZmF1bHQiLCIvYXBwcy9wcm9kL2xtb2R1bGVzL3N5c19jb3JlIiwiL2FwcHMvb3BzL3Byb2QvbmNvL21vZHVsZWZpbGVzL2NvcmUiLCIvYXBwcy9wcm9kL2xtb2R1bGVzL2NvcmUiLCIvb3B0L2NyYXkvbW9kdWxlZmlsZXMiLCIvb3B0L21vZHVsZWZp;' export '_ModuleTable004_;' '_ModuleTable005_=bGVzIix9LFsic3lzdGVtQmFzZU1QQVRIIl09Ii91c3Ivc2hhcmUvbW9kdWxlczovdXNyL3NoYXJlL01vZHVsZXMvJE1PRFVMRV9WRVJTSU9OL21vZHVsZWZpbGVzOi91c3Ivc2hhcmUvbW9kdWxlcy9tb2R1bGVmaWxlczovdXNyL3NoYXJlL21vZHVsZWZpbGVzL0xpbnV4Oi91c3Ivc2hhcmUvbW9kdWxlZmlsZXMvQ29yZTovdXNyL3NoYXJlL2xtb2QvbG1vZC9tb2R1bGVmaWxlcy9Db3JlOi9vcHQvY3JheS9wZS9sbW9kL21vZHVsZWZpbGVzL2NvcmU6L29wdC9jcmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvY3JheXBlLXRhcmdldHMvZGVmYXVsdDovYXBwcy9wcm9kL2xtb2R1bGVzL3N5c19jb3JlOi9hcHBzL29wcy9wcm9kL25jby9tb2R1bGVmaWxlcy9jb3JlOi9hcHBzL3Byb2Qv;' export '_ModuleTable005_;' '_ModuleTable006_=bG1vZHVsZXMvY29yZTovb3B0L2NyYXkvbW9kdWxlZmlsZXM6L29wdC9tb2R1bGVmaWxlcyIsfQ==;' export '_ModuleTable006_;' '_ModuleTable_Sz_=6;' export '_ModuleTable_Sz_;'
+++ CRAYPE_NETWORK_TARGET=ofi
+++ export CRAYPE_NETWORK_TARGET
+++ CRAY_CPU_TARGET=x86-rome
+++ export CRAY_CPU_TARGET
+++ CRAY_LMOD_CPU=x86-rome/1.0
+++ export CRAY_LMOD_CPU
+++ CRAY_LMOD_NET=ofi/1.0
+++ export CRAY_LMOD_NET
+++ unset ECFHOSTSDIR
+++ unset ECF_HOSTFILE
+++ unset ECF_PORT
+++ unset ECF_ROOT
+++ HPC_OPT=/apps/ops/prod/libs
+++ export HPC_OPT
+++ __LMOD_REF_COUNT_LD_LIBRARY_PATH=/opt/cray/libfabric/1.11.0.0./lib64:1
+++ export __LMOD_REF_COUNT_LD_LIBRARY_PATH
+++ LD_LIBRARY_PATH=/opt/cray/libfabric/1.11.0.0./lib64
+++ export LD_LIBRARY_PATH
+++ LMOD_FAMILY_CRAYPE_CPU=craype-x86-rome
+++ export LMOD_FAMILY_CRAYPE_CPU
+++ LMOD_FAMILY_CRAYPE_CPU_VERSION=false
+++ export LMOD_FAMILY_CRAYPE_CPU_VERSION
+++ LMOD_FAMILY_CRAYPE_NETWORK=craype-network-ofi
+++ export LMOD_FAMILY_CRAYPE_NETWORK
+++ LMOD_FAMILY_CRAYPE_NETWORK_VERSION=false
+++ export LMOD_FAMILY_CRAYPE_NETWORK_VERSION
+++ __LMOD_REF_COUNT_LOADEDMODULES='craype-x86-rome:1;libfabric/1.11.0.0.:1;craype-network-ofi:1;envvar/1.0:1'
+++ export __LMOD_REF_COUNT_LOADEDMODULES
+++ LOADEDMODULES=craype-x86-rome:libfabric/1.11.0.0.:craype-network-ofi:envvar/1.0
+++ export LOADEDMODULES
+++ MANPATH=/opt/cray/libfabric/1.11.0.0./share/man:/usr/share/lmod/lmod/share/man:/usr/share/man:/opt/pbs/share/man:/opt/clmgr/man:/opt/sgi/share/man:/opt/clmgr/share/man:/opt/clmgr/lib/cm-cli/man
+++ export MANPATH
+++ MODULEPATH='/opt/cray/pe/lmod/modulefiles/net/ofi/1.0:/opt/cray/pe/lmod/modulefiles/cpu/x86-rome/1.0:/usr/share/modules:/usr/share/Modules/$MODULE_VERSION/modulefiles:/usr/share/modules/modulefiles:/usr/share/modulefiles/Linux:/usr/share/modulefiles/Core:/usr/share/lmod/lmod/modulefiles/Core:/opt/cray/pe/lmod/modulefiles/core:/opt/cray/pe/lmod/modulefiles/craype-targets/default:/apps/prod/lmodules/sys_core:/apps/ops/prod/nco/modulefiles/core:/apps/prod/lmodules/core:/opt/cray/modulefiles:/opt/modulefiles'
+++ export MODULEPATH
+++ __LMOD_REF_COUNT_PATH='/opt/cray/libfabric/1.11.0.0./bin:1;/opt/clmgr/sbin:1;/opt/clmgr/bin:1;/opt/sgi/sbin:1;/opt/sgi/bin:1;/usr/local/bin:1;/usr/bin:1;/bin:2;/usr/lib/mit/bin:1;/usr/lib/mit/sbin:1;/opt/pbs/bin:1;/sbin:1'
+++ export __LMOD_REF_COUNT_PATH
+++ PATH=/opt/cray/libfabric/1.11.0.0./bin:/opt/clmgr/sbin:/opt/clmgr/bin:/opt/sgi/sbin:/opt/sgi/bin:/usr/local/bin:/usr/bin:/bin:/usr/lib/mit/bin:/usr/lib/mit/sbin:/opt/pbs/bin:/sbin
+++ export PATH
+++ PE_PRODUCT_LIST=CRAYPE_X86_ROME
+++ export PE_PRODUCT_LIST
+++ PKG_CONFIG_PATH=/opt/cray/libfabric/1.11.0.0./lib64/pkgconfig
+++ export PKG_CONFIG_PATH
+++ unset PRODMACHINEFILE
+++ unset __LMOD_REF_COUNT_PYTHONPATH
+++ unset PYTHONPATH
+++ unset __LMOD_REF_COUNT_QT_PLUGIN_PATH
+++ unset QT_PLUGIN_PATH
+++ __LMOD_REF_COUNT__LMFILES_='/opt/cray/pe/lmod/modulefiles/craype-targets/default/craype-x86-rome.lua:1;/opt/cray/modulefiles/libfabric/1.11.0.0.:1;/opt/cray/pe/lmod/modulefiles/craype-targets/default/craype-network-ofi.lua:1;/apps/prod/lmodules/sys_core/envvar/1.0:1'
+++ export __LMOD_REF_COUNT__LMFILES_
+++ _LMFILES_=/opt/cray/pe/lmod/modulefiles/craype-targets/default/craype-x86-rome.lua:/opt/cray/modulefiles/libfabric/1.11.0.0.:/opt/cray/pe/lmod/modulefiles/craype-targets/default/craype-network-ofi.lua:/apps/prod/lmodules/sys_core/envvar/1.0
+++ export _LMFILES_
+++ _ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJNVHZlcnNpb24iXT0zLFsiY19yZWJ1aWxkVGltZSJdPWZhbHNlLFsiY19zaG9ydFRpbWUiXT1mYWxzZSxkZXB0aFQ9e30sZmFtaWx5PXtbImNyYXlwZV9jcHUiXT0iY3JheXBlLXg4Ni1yb21lIixbImNyYXlwZV9uZXR3b3JrIl09ImNyYXlwZS1uZXR3b3JrLW9maSIsfSxtVD17WyJjcmF5cGUtbmV0d29yay1vZmkiXT17WyJmbiJdPSIvb3B0L2NyYXkvcGUvbG1vZC9tb2R1bGVmaWxlcy9jcmF5cGUtdGFyZ2V0cy9kZWZhdWx0L2NyYXlwZS1uZXR3b3JrLW9maS5sdWEiLFsiZnVsbE5hbWUiXT0iY3JheXBlLW5ldHdvcmstb2ZpIixbImxvYWRPcmRlciJdPTMscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MSxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNl
+++ export _ModuleTable001_
+++ _ModuleTable002_=ck5hbWUiXT0iY3JheXBlLW5ldHdvcmstb2ZpIix9LFsiY3JheXBlLXg4Ni1yb21lIl09e1siZm4iXT0iL29wdC9jcmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvY3JheXBlLXRhcmdldHMvZGVmYXVsdC9jcmF5cGUteDg2LXJvbWUubHVhIixbImZ1bGxOYW1lIl09ImNyYXlwZS14ODYtcm9tZSIsWyJsb2FkT3JkZXIiXT0xLHByb3BUPXt9LFsic3RhY2tEZXB0aCJdPTEsWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09ImNyYXlwZS14ODYtcm9tZSIsfSxlbnZ2YXI9e1siZm4iXT0iL2FwcHMvcHJvZC9sbW9kdWxlcy9zeXNfY29yZS9lbnZ2YXIvMS4wIixbImZ1bGxOYW1lIl09ImVudnZhci8xLjAiLFsibG9hZE9yZGVyIl09NCxwcm9wVD17fSxbInN0YWNrRGVwdGgiXT0w
+++ export _ModuleTable002_
+++ _ModuleTable003_=LFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJlbnZ2YXIvMS4wIix9LGxpYmZhYnJpYz17WyJmbiJdPSIvb3B0L2NyYXkvbW9kdWxlZmlsZXMvbGliZmFicmljLzEuMTEuMC4wLiIsWyJmdWxsTmFtZSJdPSJsaWJmYWJyaWMvMS4xMS4wLjAuIixbImxvYWRPcmRlciJdPTIscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MixbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0ibGliZmFicmljIix9LH0sbXBhdGhBPXsiL29wdC9jcmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvbmV0L29maS8xLjAiLCIvb3B0L2NyYXkvcGUvbG1vZC9tb2R1bGVmaWxlcy9jcHUveDg2LXJvbWUvMS4wIiwiL3Vzci9zaGFyZS9tb2R1bGVzIiwiL3Vzci9zaGFyZS9Nb2R1bGVzLyRNT0RV
+++ export _ModuleTable003_
+++ _ModuleTable004_=TEVfVkVSU0lPTi9tb2R1bGVmaWxlcyIsIi91c3Ivc2hhcmUvbW9kdWxlcy9tb2R1bGVmaWxlcyIsIi91c3Ivc2hhcmUvbW9kdWxlZmlsZXMvTGludXgiLCIvdXNyL3NoYXJlL21vZHVsZWZpbGVzL0NvcmUiLCIvdXNyL3NoYXJlL2xtb2QvbG1vZC9tb2R1bGVmaWxlcy9Db3JlIiwiL29wdC9jcmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvY29yZSIsIi9vcHQvY3JheS9wZS9sbW9kL21vZHVsZWZpbGVzL2NyYXlwZS10YXJnZXRzL2RlZmF1bHQiLCIvYXBwcy9wcm9kL2xtb2R1bGVzL3N5c19jb3JlIiwiL2FwcHMvb3BzL3Byb2QvbmNvL21vZHVsZWZpbGVzL2NvcmUiLCIvYXBwcy9wcm9kL2xtb2R1bGVzL2NvcmUiLCIvb3B0L2NyYXkvbW9kdWxlZmlsZXMiLCIvb3B0L21vZHVsZWZp
+++ export _ModuleTable004_
+++ _ModuleTable005_=bGVzIix9LFsic3lzdGVtQmFzZU1QQVRIIl09Ii91c3Ivc2hhcmUvbW9kdWxlczovdXNyL3NoYXJlL01vZHVsZXMvJE1PRFVMRV9WRVJTSU9OL21vZHVsZWZpbGVzOi91c3Ivc2hhcmUvbW9kdWxlcy9tb2R1bGVmaWxlczovdXNyL3NoYXJlL21vZHVsZWZpbGVzL0xpbnV4Oi91c3Ivc2hhcmUvbW9kdWxlZmlsZXMvQ29yZTovdXNyL3NoYXJlL2xtb2QvbG1vZC9tb2R1bGVmaWxlcy9Db3JlOi9vcHQvY3JheS9wZS9sbW9kL21vZHVsZWZpbGVzL2NvcmU6L29wdC9jcmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvY3JheXBlLXRhcmdldHMvZGVmYXVsdDovYXBwcy9wcm9kL2xtb2R1bGVzL3N5c19jb3JlOi9hcHBzL29wcy9wcm9kL25jby9tb2R1bGVmaWxlcy9jb3JlOi9hcHBzL3Byb2Qv
+++ export _ModuleTable005_
+++ _ModuleTable006_=bG1vZHVsZXMvY29yZTovb3B0L2NyYXkvbW9kdWxlZmlsZXM6L29wdC9tb2R1bGVmaWxlcyIsfQ==
+++ export _ModuleTable006_
+++ _ModuleTable_Sz_=6
+++ export _ModuleTable_Sz_
+++ : -s sh
++ eval
+++ pwd
++ module use /lfs/h1/ops/prod/packages/amsu_estimation.v1.3.0/sorc
+++ /usr/share/lmod/lmod/libexec/lmod bash use /lfs/h1/ops/prod/packages/amsu_estimation.v1.3.0/sorc
++ eval '__LMOD_REF_COUNT_MODULEPATH=/lfs/h1/ops/prod/packages/amsu_estimation.v1.3.0/sorc:1\;/opt/cray/pe/lmod/modulefiles/net/ofi/1.0:1\;/opt/cray/pe/lmod/modulefiles/cpu/x86-rome/1.0:1\;/usr/share/modules:1\;/usr/share/Modules/\$MODULE_VERSION/modulefiles:1\;/usr/share/modules/modulefiles:1\;/usr/share/modulefiles/Linux:1\;/usr/share/modulefiles/Core:1\;/usr/share/lmod/lmod/modulefiles/Core:1\;/opt/cray/pe/lmod/modulefiles/core:1\;/opt/cray/pe/lmod/modulefiles/craype-targets/default:1\;/apps/prod/lmodules/sys_core:1\;/apps/ops/prod/nco/modulefiles/core:1\;/apps/prod/lmodules/core:1\;/opt/cray/modulefiles:1\;/opt/modulefiles:1;' export '__LMOD_REF_COUNT_MODULEPATH;' 'MODULEPATH=/lfs/h1/ops/prod/packages/amsu_estimation.v1.3.0/sorc:/opt/cray/pe/lmod/modulefiles/net/ofi/1.0:/opt/cray/pe/lmod/modulefiles/cpu/x86-rome/1.0:/usr/share/modules:/usr/share/Modules/\$MODULE_VERSION/modulefiles:/usr/share/modules/modulefiles:/usr/share/modulefiles/Linux:/usr/share/modulefiles/Core:/usr/share/lmod/lmod/modulefiles/Core:/opt/cray/pe/lmod/modulefiles/core:/opt/cray/pe/lmod/modulefiles/craype-targets/default:/apps/prod/lmodules/sys_core:/apps/ops/prod/nco/modulefiles/core:/apps/prod/lmodules/core:/opt/cray/modulefiles:/opt/modulefiles;' export 'MODULEPATH;' '_ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJNVHZlcnNpb24iXT0zLFsiY19yZWJ1aWxkVGltZSJdPWZhbHNlLFsiY19zaG9ydFRpbWUiXT1mYWxzZSxkZXB0aFQ9e30sZmFtaWx5PXtbImNyYXlwZV9jcHUiXT0iY3JheXBlLXg4Ni1yb21lIixbImNyYXlwZV9uZXR3b3JrIl09ImNyYXlwZS1uZXR3b3JrLW9maSIsfSxtVD17WyJjcmF5cGUtbmV0d29yay1vZmkiXT17WyJmbiJdPSIvb3B0L2NyYXkvcGUvbG1vZC9tb2R1bGVmaWxlcy9jcmF5cGUtdGFyZ2V0cy9kZWZhdWx0L2NyYXlwZS1uZXR3b3JrLW9maS5sdWEiLFsiZnVsbE5hbWUiXT0iY3JheXBlLW5ldHdvcmstb2ZpIixbImxvYWRPcmRlciJdPTMscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MSxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNl;' export '_ModuleTable001_;' '_ModuleTable002_=ck5hbWUiXT0iY3JheXBlLW5ldHdvcmstb2ZpIix9LFsiY3JheXBlLXg4Ni1yb21lIl09e1siZm4iXT0iL29wdC9jcmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvY3JheXBlLXRhcmdldHMvZGVmYXVsdC9jcmF5cGUteDg2LXJvbWUubHVhIixbImZ1bGxOYW1lIl09ImNyYXlwZS14ODYtcm9tZSIsWyJsb2FkT3JkZXIiXT0xLHByb3BUPXt9LFsic3RhY2tEZXB0aCJdPTEsWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09ImNyYXlwZS14ODYtcm9tZSIsfSxlbnZ2YXI9e1siZm4iXT0iL2FwcHMvcHJvZC9sbW9kdWxlcy9zeXNfY29yZS9lbnZ2YXIvMS4wIixbImZ1bGxOYW1lIl09ImVudnZhci8xLjAiLFsibG9hZE9yZGVyIl09NCxwcm9wVD17fSxbInN0YWNrRGVwdGgiXT0w;' export '_ModuleTable002_;' '_ModuleTable003_=LFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJlbnZ2YXIvMS4wIix9LGxpYmZhYnJpYz17WyJmbiJdPSIvb3B0L2NyYXkvbW9kdWxlZmlsZXMvbGliZmFicmljLzEuMTEuMC4wLiIsWyJmdWxsTmFtZSJdPSJsaWJmYWJyaWMvMS4xMS4wLjAuIixbImxvYWRPcmRlciJdPTIscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MixbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0ibGliZmFicmljIix9LH0sbXBhdGhBPXsiL2xmcy9oMS9vcHMvcHJvZC9wYWNrYWdlcy9hbXN1X2VzdGltYXRpb24udjEuMy4wL3NvcmMiLCIvb3B0L2NyYXkvcGUvbG1vZC9tb2R1bGVmaWxlcy9uZXQvb2ZpLzEuMCIsIi9vcHQvY3JheS9wZS9sbW9kL21vZHVsZWZpbGVzL2NwdS94ODYt;' export '_ModuleTable003_;' '_ModuleTable004_=cm9tZS8xLjAiLCIvdXNyL3NoYXJlL21vZHVsZXMiLCIvdXNyL3NoYXJlL01vZHVsZXMvJE1PRFVMRV9WRVJTSU9OL21vZHVsZWZpbGVzIiwiL3Vzci9zaGFyZS9tb2R1bGVzL21vZHVsZWZpbGVzIiwiL3Vzci9zaGFyZS9tb2R1bGVmaWxlcy9MaW51eCIsIi91c3Ivc2hhcmUvbW9kdWxlZmlsZXMvQ29yZSIsIi91c3Ivc2hhcmUvbG1vZC9sbW9kL21vZHVsZWZpbGVzL0NvcmUiLCIvb3B0L2NyYXkvcGUvbG1vZC9tb2R1bGVmaWxlcy9jb3JlIiwiL29wdC9jcmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvY3JheXBlLXRhcmdldHMvZGVmYXVsdCIsIi9hcHBzL3Byb2QvbG1vZHVsZXMvc3lzX2NvcmUiLCIvYXBwcy9vcHMvcHJvZC9uY28vbW9kdWxlZmlsZXMvY29yZSIsIi9hcHBzL3By;' export '_ModuleTable004_;' '_ModuleTable005_=b2QvbG1vZHVsZXMvY29yZSIsIi9vcHQvY3JheS9tb2R1bGVmaWxlcyIsIi9vcHQvbW9kdWxlZmlsZXMiLH0sWyJzeXN0ZW1CYXNlTVBBVEgiXT0iL3Vzci9zaGFyZS9tb2R1bGVzOi91c3Ivc2hhcmUvTW9kdWxlcy8kTU9EVUxFX1ZFUlNJT04vbW9kdWxlZmlsZXM6L3Vzci9zaGFyZS9tb2R1bGVzL21vZHVsZWZpbGVzOi91c3Ivc2hhcmUvbW9kdWxlZmlsZXMvTGludXg6L3Vzci9zaGFyZS9tb2R1bGVmaWxlcy9Db3JlOi91c3Ivc2hhcmUvbG1vZC9sbW9kL21vZHVsZWZpbGVzL0NvcmU6L29wdC9jcmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvY29yZTovb3B0L2NyYXkvcGUvbG1vZC9tb2R1bGVmaWxlcy9jcmF5cGUtdGFyZ2V0cy9kZWZhdWx0Oi9hcHBzL3Byb2QvbG1vZHVsZXMv;' export '_ModuleTable005_;' '_ModuleTable006_=c3lzX2NvcmU6L2FwcHMvb3BzL3Byb2QvbmNvL21vZHVsZWZpbGVzL2NvcmU6L2FwcHMvcHJvZC9sbW9kdWxlcy9jb3JlOi9vcHQvY3JheS9tb2R1bGVmaWxlczovb3B0L21vZHVsZWZpbGVzIix9;' export '_ModuleTable006_;' '_ModuleTable_Sz_=6;' export '_ModuleTable_Sz_;'
+++ __LMOD_REF_COUNT_MODULEPATH='/lfs/h1/ops/prod/packages/amsu_estimation.v1.3.0/sorc:1;/opt/cray/pe/lmod/modulefiles/net/ofi/1.0:1;/opt/cray/pe/lmod/modulefiles/cpu/x86-rome/1.0:1;/usr/share/modules:1;/usr/share/Modules/$MODULE_VERSION/modulefiles:1;/usr/share/modules/modulefiles:1;/usr/share/modulefiles/Linux:1;/usr/share/modulefiles/Core:1;/usr/share/lmod/lmod/modulefiles/Core:1;/opt/cray/pe/lmod/modulefiles/core:1;/opt/cray/pe/lmod/modulefiles/craype-targets/default:1;/apps/prod/lmodules/sys_core:1;/apps/ops/prod/nco/modulefiles/core:1;/apps/prod/lmodules/core:1;/opt/cray/modulefiles:1;/opt/modulefiles:1'
+++ export __LMOD_REF_COUNT_MODULEPATH
+++ MODULEPATH='/lfs/h1/ops/prod/packages/amsu_estimation.v1.3.0/sorc:/opt/cray/pe/lmod/modulefiles/net/ofi/1.0:/opt/cray/pe/lmod/modulefiles/cpu/x86-rome/1.0:/usr/share/modules:/usr/share/Modules/$MODULE_VERSION/modulefiles:/usr/share/modules/modulefiles:/usr/share/modulefiles/Linux:/usr/share/modulefiles/Core:/usr/share/lmod/lmod/modulefiles/Core:/opt/cray/pe/lmod/modulefiles/core:/opt/cray/pe/lmod/modulefiles/craype-targets/default:/apps/prod/lmodules/sys_core:/apps/ops/prod/nco/modulefiles/core:/apps/prod/lmodules/core:/opt/cray/modulefiles:/opt/modulefiles'
+++ export MODULEPATH
+++ _ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJNVHZlcnNpb24iXT0zLFsiY19yZWJ1aWxkVGltZSJdPWZhbHNlLFsiY19zaG9ydFRpbWUiXT1mYWxzZSxkZXB0aFQ9e30sZmFtaWx5PXtbImNyYXlwZV9jcHUiXT0iY3JheXBlLXg4Ni1yb21lIixbImNyYXlwZV9uZXR3b3JrIl09ImNyYXlwZS1uZXR3b3JrLW9maSIsfSxtVD17WyJjcmF5cGUtbmV0d29yay1vZmkiXT17WyJmbiJdPSIvb3B0L2NyYXkvcGUvbG1vZC9tb2R1bGVmaWxlcy9jcmF5cGUtdGFyZ2V0cy9kZWZhdWx0L2NyYXlwZS1uZXR3b3JrLW9maS5sdWEiLFsiZnVsbE5hbWUiXT0iY3JheXBlLW5ldHdvcmstb2ZpIixbImxvYWRPcmRlciJdPTMscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MSxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNl
+++ export _ModuleTable001_
+++ _ModuleTable002_=ck5hbWUiXT0iY3JheXBlLW5ldHdvcmstb2ZpIix9LFsiY3JheXBlLXg4Ni1yb21lIl09e1siZm4iXT0iL29wdC9jcmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvY3JheXBlLXRhcmdldHMvZGVmYXVsdC9jcmF5cGUteDg2LXJvbWUubHVhIixbImZ1bGxOYW1lIl09ImNyYXlwZS14ODYtcm9tZSIsWyJsb2FkT3JkZXIiXT0xLHByb3BUPXt9LFsic3RhY2tEZXB0aCJdPTEsWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09ImNyYXlwZS14ODYtcm9tZSIsfSxlbnZ2YXI9e1siZm4iXT0iL2FwcHMvcHJvZC9sbW9kdWxlcy9zeXNfY29yZS9lbnZ2YXIvMS4wIixbImZ1bGxOYW1lIl09ImVudnZhci8xLjAiLFsibG9hZE9yZGVyIl09NCxwcm9wVD17fSxbInN0YWNrRGVwdGgiXT0w
+++ export _ModuleTable002_
+++ _ModuleTable003_=LFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJlbnZ2YXIvMS4wIix9LGxpYmZhYnJpYz17WyJmbiJdPSIvb3B0L2NyYXkvbW9kdWxlZmlsZXMvbGliZmFicmljLzEuMTEuMC4wLiIsWyJmdWxsTmFtZSJdPSJsaWJmYWJyaWMvMS4xMS4wLjAuIixbImxvYWRPcmRlciJdPTIscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MixbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0ibGliZmFicmljIix9LH0sbXBhdGhBPXsiL2xmcy9oMS9vcHMvcHJvZC9wYWNrYWdlcy9hbXN1X2VzdGltYXRpb24udjEuMy4wL3NvcmMiLCIvb3B0L2NyYXkvcGUvbG1vZC9tb2R1bGVmaWxlcy9uZXQvb2ZpLzEuMCIsIi9vcHQvY3JheS9wZS9sbW9kL21vZHVsZWZpbGVzL2NwdS94ODYt
+++ export _ModuleTable003_
+++ _ModuleTable004_=cm9tZS8xLjAiLCIvdXNyL3NoYXJlL21vZHVsZXMiLCIvdXNyL3NoYXJlL01vZHVsZXMvJE1PRFVMRV9WRVJTSU9OL21vZHVsZWZpbGVzIiwiL3Vzci9zaGFyZS9tb2R1bGVzL21vZHVsZWZpbGVzIiwiL3Vzci9zaGFyZS9tb2R1bGVmaWxlcy9MaW51eCIsIi91c3Ivc2hhcmUvbW9kdWxlZmlsZXMvQ29yZSIsIi91c3Ivc2hhcmUvbG1vZC9sbW9kL21vZHVsZWZpbGVzL0NvcmUiLCIvb3B0L2NyYXkvcGUvbG1vZC9tb2R1bGVmaWxlcy9jb3JlIiwiL29wdC9jcmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvY3JheXBlLXRhcmdldHMvZGVmYXVsdCIsIi9hcHBzL3Byb2QvbG1vZHVsZXMvc3lzX2NvcmUiLCIvYXBwcy9vcHMvcHJvZC9uY28vbW9kdWxlZmlsZXMvY29yZSIsIi9hcHBzL3By
+++ export _ModuleTable004_
+++ _ModuleTable005_=b2QvbG1vZHVsZXMvY29yZSIsIi9vcHQvY3JheS9tb2R1bGVmaWxlcyIsIi9vcHQvbW9kdWxlZmlsZXMiLH0sWyJzeXN0ZW1CYXNlTVBBVEgiXT0iL3Vzci9zaGFyZS9tb2R1bGVzOi91c3Ivc2hhcmUvTW9kdWxlcy8kTU9EVUxFX1ZFUlNJT04vbW9kdWxlZmlsZXM6L3Vzci9zaGFyZS9tb2R1bGVzL21vZHVsZWZpbGVzOi91c3Ivc2hhcmUvbW9kdWxlZmlsZXMvTGludXg6L3Vzci9zaGFyZS9tb2R1bGVmaWxlcy9Db3JlOi91c3Ivc2hhcmUvbG1vZC9sbW9kL21vZHVsZWZpbGVzL0NvcmU6L29wdC9jcmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvY29yZTovb3B0L2NyYXkvcGUvbG1vZC9tb2R1bGVmaWxlcy9jcmF5cGUtdGFyZ2V0cy9kZWZhdWx0Oi9hcHBzL3Byb2QvbG1vZHVsZXMv
+++ export _ModuleTable005_
+++ _ModuleTable006_=c3lzX2NvcmU6L2FwcHMvb3BzL3Byb2QvbmNvL21vZHVsZWZpbGVzL2NvcmU6L2FwcHMvcHJvZC9sbW9kdWxlcy9jb3JlOi9vcHQvY3JheS9tb2R1bGVmaWxlczovb3B0L21vZHVsZWZpbGVzIix9
+++ export _ModuleTable006_
+++ _ModuleTable_Sz_=6
+++ export _ModuleTable_Sz_
+++ : -s sh
++ eval
++ module load build-amsu_estimation.module.lua
+++ /usr/share/lmod/lmod/libexec/lmod bash load build-amsu_estimation.module.lua
++ eval 'BUFR_INC4=/apps/ops/prod/libs/intel/19.1.3.304/bufr/11.5.0/include_4;' export 'BUFR_INC4;' 'BUFR_INC4_DA=/apps/ops/prod/libs/intel/19.1.3.304/bufr/11.5.0/include_4_DA;' export 'BUFR_INC4_DA;' 'BUFR_INC8=/apps/ops/prod/libs/intel/19.1.3.304/bufr/11.5.0/include_8;' export 'BUFR_INC8;' 'BUFR_INC8_DA=/apps/ops/prod/libs/intel/19.1.3.304/bufr/11.5.0/include_8_DA;' export 'BUFR_INC8_DA;' 'BUFR_INCd=/apps/ops/prod/libs/intel/19.1.3.304/bufr/11.5.0/include_d;' export 'BUFR_INCd;' 'BUFR_INCd_DA=/apps/ops/prod/libs/intel/19.1.3.304/bufr/11.5.0/include_d_DA;' export 'BUFR_INCd_DA;' 'BUFR_LIB4=/apps/ops/prod/libs/intel/19.1.3.304/bufr/11.5.0/lib64/libbufr_4.a;' export 'BUFR_LIB4;' 'BUFR_LIB4_DA=/apps/ops/prod/libs/intel/19.1.3.304/bufr/11.5.0/lib64/libbufr_4_DA.a;' export 'BUFR_LIB4_DA;' 'BUFR_LIB8=/apps/ops/prod/libs/intel/19.1.3.304/bufr/11.5.0/lib64/libbufr_8.a;' export 'BUFR_LIB8;' 'BUFR_LIB8_DA=/apps/ops/prod/libs/intel/19.1.3.304/bufr/11.5.0/lib64/libbufr_8_DA.a;' export 'BUFR_LIB8_DA;' 'BUFR_LIBd=/apps/ops/prod/libs/intel/19.1.3.304/bufr/11.5.0/lib64/libbufr_d.a;' export 'BUFR_LIBd;' 'BUFR_LIBd_DA=/apps/ops/prod/libs/intel/19.1.3.304/bufr/11.5.0/lib64/libbufr_d_DA.a;' export 'BUFR_LIBd_DA;' '__LMOD_REF_COUNT_CLASSPATH=/pe/intel/compilers_and_libraries_2020.4.304/linux/mpi/intel64/lib/mpi.jar:1;' export '__LMOD_REF_COUNT_CLASSPATH;' 'CLASSPATH=/pe/intel/compilers_and_libraries_2020.4.304/linux/mpi/intel64/lib/mpi.jar;' export 'CLASSPATH;' '__LMOD_REF_COUNT_CPATH=/pe/intel/compilers_and_libraries_2020.4.304/linux/ipp/include:1\;/pe/intel/compilers_and_libraries_2020.4.304/linux/mkl/include:1\;/pe/intel/compilers_and_libraries_2020.4.304/linux/pstl/include:1\;/pe/intel/compilers_and_libraries_2020.4.304/linux/pstl/stdlib:1\;/pe/intel/compilers_and_libraries_2020.4.304/linux/tbb/include:2;' export '__LMOD_REF_COUNT_CPATH;' 'CPATH=/pe/intel/compilers_and_libraries_2020.4.304/linux/ipp/include:/pe/intel/compilers_and_libraries_2020.4.304/linux/mkl/include:/pe/intel/compilers_and_libraries_2020.4.304/linux/pstl/include:/pe/intel/compilers_and_libraries_2020.4.304/linux/pstl/stdlib:/pe/intel/compilers_and_libraries_2020.4.304/linux/tbb/include;' export 'CPATH;' 'CRAYPE_DIR=/opt/cray/pe/craype/2.7.10;' export 'CRAYPE_DIR;' 'CRAYPE_VERSION=2.7.10;' export 'CRAYPE_VERSION;' 'CRAY_LMOD_COMPILER=intel/19.0;' export 'CRAY_LMOD_COMPILER;' '__LMOD_REF_COUNT_INFOPATH=/pe/intel/documentation_2020/en/debugger/gdb-ia/info:1\;/apps/docs/info:1;' export '__LMOD_REF_COUNT_INFOPATH;' 'INFOPATH=/pe/intel/documentation_2020/en/debugger/gdb-ia/info::/apps/docs/info;' export 'INFOPATH;' '__LMOD_REF_COUNT_INTEL_LICENSE_FILE=/pe/intel/compilers_and_libraries_2020.4.304/linux/licenses:1\;/opt/intel/licenses:1\;/intel/licenses:1;' export '__LMOD_REF_COUNT_INTEL_LICENSE_FILE;' 'INTEL_LICENSE_FILE=/pe/intel/compilers_and_libraries_2020.4.304/linux/licenses:/opt/intel/licenses:/intel/licenses;' export 'INTEL_LICENSE_FILE;' 'INTEL_MAJOR_VERSION=19.1;' export 'INTEL_MAJOR_VERSION;' 'INTEL_MINOR_VERSION=3.304;' export 'INTEL_MINOR_VERSION;' 'INTEL_PATH=/pe/intel/compilers_and_libraries_2020.4.304;' export 'INTEL_PATH;' 'INTEL_PYTHONHOME=/pe/intel/debugger_2020/python/intel64/;' export 'INTEL_PYTHONHOME;' 'INTEL_VERSION=19.1.3.304;' export 'INTEL_VERSION;' 'IPPROOT=/pe/intel/compilers_and_libraries_2020.4.304/linux/ipp;' export 'IPPROOT;' 'I_MPI_ROOT=/pe/intel/compilers_and_libraries_2020.4.304/linux/mpi;' export 'I_MPI_ROOT;' '__LMOD_REF_COUNT_LD_LIBRARY_PATH=/pe/intel/compilers_and_libraries_2020.4.304/linux/compiler/lib/intel64_lin:1\;/pe/intel/compilers_and_libraries_2020.4.304/linux/mpi/intel64/lib/release:1\;/pe/intel/compilers_and_libraries_2020.4.304/linux/mpi/intel64/lib:1\;/pe/intel/compilers_and_libraries_2020.4.304/linux/ipp/lib/intel64:1\;/pe/intel/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64_lin:1\;/pe/intel/compilers_and_libraries_2020.4.304/linux/tbb/lib/intel64/gcc4.8:1\;/pe/intel/debugger_2020/python/intel64/lib:1\;/pe/intel/debugger_2020/libipt/intel64/lib:1\;/opt/cray/libfabric/1.11.0.0./lib64:1;' export '__LMOD_REF_COUNT_LD_LIBRARY_PATH;' 'LD_LIBRARY_PATH=/pe/intel/compilers_and_libraries_2020.4.304/linux/compiler/lib/intel64_lin:/pe/intel/compilers_and_libraries_2020.4.304/linux/mpi/intel64/lib/release:/pe/intel/compilers_and_libraries_2020.4.304/linux/mpi/intel64/lib:/pe/intel/compilers_and_libraries_2020.4.304/linux/ipp/lib/intel64:/pe/intel/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64_lin:/pe/intel/compilers_and_libraries_2020.4.304/linux/tbb/lib/intel64/gcc4.8:/pe/intel/debugger_2020/python/intel64/lib:/pe/intel/debugger_2020/libipt/intel64/lib:/opt/cray/libfabric/1.11.0.0./lib64;' export 'LD_LIBRARY_PATH;' '__LMOD_REF_COUNT_LIBRARY_PATH=/pe/intel/compilers_and_libraries_2020.4.304/linux/ipp/lib/intel64:1\;/pe/intel/compilers_and_libraries_2020.4.304/linux/compiler/lib/intel64_lin:1\;/pe/intel/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64_lin:1\;/pe/intel/compilers_and_libraries_2020.4.304/linux/tbb/lib/intel64/gcc4.8:2;' export '__LMOD_REF_COUNT_LIBRARY_PATH;' 'LIBRARY_PATH=/pe/intel/compilers_and_libraries_2020.4.304/linux/ipp/lib/intel64:/pe/intel/compilers_and_libraries_2020.4.304/linux/compiler/lib/intel64_lin:/pe/intel/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64_lin:/pe/intel/compilers_and_libraries_2020.4.304/linux/tbb/lib/intel64/gcc4.8;' export 'LIBRARY_PATH;' '__LMOD_REF_COUNT_LMOD_CUSTOM_PATHS=COMPILER/apps/ops/prod/nco/modulefiles/compiler/intel/19.1.3.304:1\;COMPILER/apps/ops/prod/libs/modulefiles/compiler/intel/19.1.3.304:1\;COMPILER/apps/prod/lmodules/intel/19.1.3.304:1;' export '__LMOD_REF_COUNT_LMOD_CUSTOM_PATHS;' 'LMOD_CUSTOM_PATHS=COMPILER/apps/ops/prod/nco/modulefiles/compiler/intel/19.1.3.304:COMPILER/apps/ops/prod/libs/modulefiles/compiler/intel/19.1.3.304:COMPILER/apps/prod/lmodules/intel/19.1.3.304;' export 'LMOD_CUSTOM_PATHS;' 'LMOD_FAMILY_COMPILER=intel;' export 'LMOD_FAMILY_COMPILER;' 'LMOD_FAMILY_COMPILER_VERSION=19.1.3.304;' export 'LMOD_FAMILY_COMPILER_VERSION;' 'LMOD_FAMILY_CRAYPE=craype;' export 'LMOD_FAMILY_CRAYPE;' 'LMOD_FAMILY_CRAYPE_VERSION=2.7.10;' export 'LMOD_FAMILY_CRAYPE_VERSION;' 'LMOD_FAMILY_PRGENV=PrgEnv-intel;' export 'LMOD_FAMILY_PRGENV;' 'LMOD_FAMILY_PRGENV_VERSION=8.1.0;' export 'LMOD_FAMILY_PRGENV_VERSION;' '__LMOD_REF_COUNT_LOADEDMODULES=craype-x86-rome:1\;libfabric/1.11.0.0.:1\;craype-network-ofi:1\;envvar/1.0:1\;PrgEnv-intel/8.1.0:1\;craype/2.7.10:1\;intel/19.1.3.304:1\;bufr/11.5.0:1\;build-amsu_estimation.module:1;' export '__LMOD_REF_COUNT_LOADEDMODULES;' 'LOADEDMODULES=craype-x86-rome:libfabric/1.11.0.0.:craype-network-ofi:envvar/1.0:PrgEnv-intel/8.1.0:craype/2.7.10:intel/19.1.3.304:bufr/11.5.0:build-amsu_estimation.module;' export 'LOADEDMODULES;' '__LMOD_REF_COUNT_MANPATH=/pe/intel/man/common:1\;/pe/intel/compilers_and_libraries_2020.4.304/linux/mpi/man:1\;/pe/intel/documentation_2020/en/debugger/gdb-ia/man:1\;/opt/cray/pe/craype/2.7.10/man:1\;/opt/cray/libfabric/1.11.0.0./share/man:1\;/usr/share/lmod/lmod/share/man:1\;/usr/share/man:1\;/opt/pbs/share/man:1\;/opt/clmgr/man:1\;/opt/sgi/share/man:1\;/opt/clmgr/share/man:1\;/opt/clmgr/lib/cm-cli/man:1;' export '__LMOD_REF_COUNT_MANPATH;' 'MANPATH=/pe/intel/man/common:/pe/intel/compilers_and_libraries_2020.4.304/linux/mpi/man:/pe/intel/documentation_2020/en/debugger/gdb-ia/man:/opt/cray/pe/craype/2.7.10/man:/opt/cray/libfabric/1.11.0.0./share/man:/usr/share/lmod/lmod/share/man:/usr/share/man:/opt/pbs/share/man:/opt/clmgr/man:/opt/sgi/share/man:/opt/clmgr/share/man:/opt/clmgr/lib/cm-cli/man;' export 'MANPATH;' 'MKLROOT=/pe/intel/compilers_and_libraries_2020.4.304/linux/mkl;' export 'MKLROOT;' '__LMOD_REF_COUNT_MODULEPATH=/apps/ops/prod/nco/modulefiles/compiler/intel/19.1.3.304:1\;/apps/ops/prod/libs/modulefiles/compiler/intel/19.1.3.304:1\;/apps/prod/lmodules/intel/19.1.3.304:1\;/opt/cray/pe/lmod/modulefiles/comnet/intel/19.0/ofi/1.0:1\;/apps/prod/lmodules/compiler/intel/19.0:1\;/lfs/h1/ops/prod/packages/amsu_estimation.v1.3.0/sorc:1\;/opt/cray/pe/lmod/modulefiles/net/ofi/1.0:1\;/opt/cray/pe/lmod/modulefiles/cpu/x86-rome/1.0:1\;/usr/share/modules:1\;/usr/share/Modules/\$MODULE_VERSION/modulefiles:1\;/usr/share/modules/modulefiles:1\;/usr/share/modulefiles/Linux:1\;/usr/share/modulefiles/Core:1\;/usr/share/lmod/lmod/modulefiles/Core:1\;/opt/cray/pe/lmod/modulefiles/core:1\;/opt/cray/pe/lmod/modulefiles/craype-targets/default:1\;/apps/prod/lmodules/sys_core:1\;/apps/ops/prod/nco/modulefiles/core:1\;/apps/prod/lmodules/core:1\;/opt/cray/modulefiles:1\;/opt/modulefiles:1;' export '__LMOD_REF_COUNT_MODULEPATH;' 'MODULEPATH=/apps/ops/prod/nco/modulefiles/compiler/intel/19.1.3.304:/apps/ops/prod/libs/modulefiles/compiler/intel/19.1.3.304:/apps/prod/lmodules/intel/19.1.3.304:/opt/cray/pe/lmod/modulefiles/comnet/intel/19.0/ofi/1.0:/apps/prod/lmodules/compiler/intel/19.0:/lfs/h1/ops/prod/packages/amsu_estimation.v1.3.0/sorc:/opt/cray/pe/lmod/modulefiles/net/ofi/1.0:/opt/cray/pe/lmod/modulefiles/cpu/x86-rome/1.0:/usr/share/modules:/usr/share/Modules/\$MODULE_VERSION/modulefiles:/usr/share/modules/modulefiles:/usr/share/modulefiles/Linux:/usr/share/modulefiles/Core:/usr/share/lmod/lmod/modulefiles/Core:/opt/cray/pe/lmod/modulefiles/core:/opt/cray/pe/lmod/modulefiles/craype-targets/default:/apps/prod/lmodules/sys_core:/apps/ops/prod/nco/modulefiles/core:/apps/prod/lmodules/core:/opt/cray/modulefiles:/opt/modulefiles;' export 'MODULEPATH;' '__LMOD_REF_COUNT_NLSPATH=/pe/intel/compilers_and_libraries_2020.4.304/linux/compiler/lib/intel64/locale/%l_%t/%N:1\;/pe/intel/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64_lin/locale/%l_%t/%N:1\;/pe/intel/debugger_2020/gdb/intel64/share/locale/%l_%t/%N:1;' export '__LMOD_REF_COUNT_NLSPATH;' 'NLSPATH=/pe/intel/compilers_and_libraries_2020.4.304/linux/compiler/lib/intel64/locale/%l_%t/%N:/pe/intel/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64_lin/locale/%l_%t/%N:/pe/intel/debugger_2020/gdb/intel64/share/locale/%l_%t/%N;' export 'NLSPATH;' '__LMOD_REF_COUNT_PATH=/apps/ops/prod/libs/intel/19.1.3.304/bufr/11.5.0/bin:1\;/pe/intel/compilers_and_libraries_2020.4.304/linux/bin/intel64:1\;/pe/intel/compilers_and_libraries_2020.4.304/linux/bin:1\;/pe/intel/compilers_and_libraries_2020.4.304/linux/mpi/intel64/bin:1\;/pe/intel/debugger_2020/gdb/intel64/bin:1\;/opt/cray/pe/craype/2.7.10/bin:1\;/opt/cray/libfabric/1.11.0.0./bin:1\;/opt/clmgr/sbin:1\;/opt/clmgr/bin:1\;/opt/sgi/sbin:1\;/opt/sgi/bin:1\;/usr/local/bin:1\;/usr/bin:1\;/bin:2\;/usr/lib/mit/bin:1\;/usr/lib/mit/sbin:1\;/opt/pbs/bin:1\;/sbin:1\;/opt/cray/pe/bin:1;' export '__LMOD_REF_COUNT_PATH;' 'PATH=/apps/ops/prod/libs/intel/19.1.3.304/bufr/11.5.0/bin:/pe/intel/compilers_and_libraries_2020.4.304/linux/bin/intel64:/pe/intel/compilers_and_libraries_2020.4.304/linux/bin:/pe/intel/compilers_and_libraries_2020.4.304/linux/mpi/intel64/bin:/pe/intel/debugger_2020/gdb/intel64/bin:/opt/cray/pe/craype/2.7.10/bin:/opt/cray/libfabric/1.11.0.0./bin:/opt/clmgr/sbin:/opt/clmgr/bin:/opt/sgi/sbin:/opt/sgi/bin:/usr/local/bin:/usr/bin:/bin:/usr/lib/mit/bin:/usr/lib/mit/sbin:/opt/pbs/bin:/sbin:/opt/cray/pe/bin;' export 'PATH;' 'PE_ENV=INTEL;' export 'PE_ENV;' '__LMOD_REF_COUNT_PE_PRODUCT_LIST=CRAYPE:1\;CRAYPE_X86_ROME:1;' export '__LMOD_REF_COUNT_PE_PRODUCT_LIST;' 'PE_PRODUCT_LIST=CRAYPE:CRAYPE_X86_ROME;' export 'PE_PRODUCT_LIST;' 'PKGCONFIG_ENABLED=1;' export 'PKGCONFIG_ENABLED;' '__LMOD_REF_COUNT_PKG_CONFIG_PATH=/pe/intel/compilers_and_libraries_2020.4.304/linux/mkl/bin/pkgconfig:1\;/opt/cray/pe/craype/2.7.10/pkg-config:1\;/opt/cray/libfabric/1.11.0.0./lib64/pkgconfig:1;' export '__LMOD_REF_COUNT_PKG_CONFIG_PATH;' 'PKG_CONFIG_PATH=/pe/intel/compilers_and_libraries_2020.4.304/linux/mkl/bin/pkgconfig:/opt/cray/pe/craype/2.7.10/pkg-config:/opt/cray/libfabric/1.11.0.0./lib64/pkgconfig;' export 'PKG_CONFIG_PATH;' 'PSTLROOT=/pe/intel/compilers_and_libraries_2020.4.304/linux/pstl;' export 'PSTLROOT;' 'TBBROOT=/pe/intel/compilers_and_libraries_2020.4.304/linux/tbb;' export 'TBBROOT;' '__LMOD_REF_COUNT__LMFILES_=/opt/cray/pe/lmod/modulefiles/craype-targets/default/craype-x86-rome.lua:1\;/opt/cray/modulefiles/libfabric/1.11.0.0.:1\;/opt/cray/pe/lmod/modulefiles/craype-targets/default/craype-network-ofi.lua:1\;/apps/prod/lmodules/sys_core/envvar/1.0:1\;/opt/cray/pe/lmod/modulefiles/core/PrgEnv-intel/8.1.0.lua:1\;/opt/cray/pe/lmod/modulefiles/core/craype/2.7.10.lua:1\;/apps/prod/lmodules/core/intel/19.1.3.304.lua:1\;/apps/ops/prod/libs/modulefiles/compiler/intel/19.1.3.304/bufr/11.5.0.lua:1\;/lfs/h1/ops/prod/packages/amsu_estimation.v1.3.0/sorc/build-amsu_estimation.module.lua:1;' export '__LMOD_REF_COUNT__LMFILES_;' '_LMFILES_=/opt/cray/pe/lmod/modulefiles/craype-targets/default/craype-x86-rome.lua:/opt/cray/modulefiles/libfabric/1.11.0.0.:/opt/cray/pe/lmod/modulefiles/craype-targets/default/craype-network-ofi.lua:/apps/prod/lmodules/sys_core/envvar/1.0:/opt/cray/pe/lmod/modulefiles/core/PrgEnv-intel/8.1.0.lua:/opt/cray/pe/lmod/modulefiles/core/craype/2.7.10.lua:/apps/prod/lmodules/core/intel/19.1.3.304.lua:/apps/ops/prod/libs/modulefiles/compiler/intel/19.1.3.304/bufr/11.5.0.lua:/lfs/h1/ops/prod/packages/amsu_estimation.v1.3.0/sorc/build-amsu_estimation.module.lua;' export '_LMFILES_;' '_ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJNVHZlcnNpb24iXT0zLFsiY19yZWJ1aWxkVGltZSJdPWZhbHNlLFsiY19zaG9ydFRpbWUiXT1mYWxzZSxkZXB0aFQ9e30sZmFtaWx5PXtbIlByZ0VudiJdPSJQcmdFbnYtaW50ZWwiLFsiY29tcGlsZXIiXT0iaW50ZWwiLFsiY3JheXBlIl09ImNyYXlwZSIsWyJjcmF5cGVfY3B1Il09ImNyYXlwZS14ODYtcm9tZSIsWyJjcmF5cGVfbmV0d29yayJdPSJjcmF5cGUtbmV0d29yay1vZmkiLH0sbVQ9e1siUHJnRW52LWludGVsIl09e1siZm4iXT0iL29wdC9jcmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvY29yZS9QcmdFbnYtaW50ZWwvOC4xLjAubHVhIixbImZ1bGxOYW1lIl09IlByZ0Vudi1pbnRlbC84LjEuMCIsWyJsb2FkT3JkZXIiXT01LHByb3BUPXt9;' export '_ModuleTable001_;' '_ModuleTable002_=LFsic3RhY2tEZXB0aCJdPTEsWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09IlByZ0Vudi1pbnRlbC84LjEuMCIsfSxidWZyPXtbImZuIl09Ii9hcHBzL29wcy9wcm9kL2xpYnMvbW9kdWxlZmlsZXMvY29tcGlsZXIvaW50ZWwvMTkuMS4zLjMwNC9idWZyLzExLjUuMC5sdWEiLFsiZnVsbE5hbWUiXT0iYnVmci8xMS41LjAiLFsibG9hZE9yZGVyIl09OCxwcm9wVD17fSxbInN0YWNrRGVwdGgiXT0xLFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJidWZyLzExLjUuMCIsfSxbImJ1aWxkLWFtc3VfZXN0aW1hdGlvbi5tb2R1bGUiXT17WyJmbiJdPSIvbGZzL2gxL29wcy9wcm9kL3BhY2thZ2VzL2Ftc3VfZXN0aW1hdGlvbi52MS4zLjAvc29yYy9idWlsZC1h;' export '_ModuleTable002_;' '_ModuleTable003_=bXN1X2VzdGltYXRpb24ubW9kdWxlLmx1YSIsWyJmdWxsTmFtZSJdPSJidWlsZC1hbXN1X2VzdGltYXRpb24ubW9kdWxlIixbImxvYWRPcmRlciJdPTkscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MCxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0iYnVpbGQtYW1zdV9lc3RpbWF0aW9uLm1vZHVsZSIsfSxjcmF5cGU9e1siZm4iXT0iL29wdC9jcmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvY29yZS9jcmF5cGUvMi43LjEwLmx1YSIsWyJmdWxsTmFtZSJdPSJjcmF5cGUvMi43LjEwIixbImxvYWRPcmRlciJdPTYscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MSxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0iY3JheXBlLzIuNy4xMCIsfSxbImNyYXlwZS1uZXR3;' export '_ModuleTable003_;' '_ModuleTable004_=b3JrLW9maSJdPXtbImZuIl09Ii9vcHQvY3JheS9wZS9sbW9kL21vZHVsZWZpbGVzL2NyYXlwZS10YXJnZXRzL2RlZmF1bHQvY3JheXBlLW5ldHdvcmstb2ZpLmx1YSIsWyJmdWxsTmFtZSJdPSJjcmF5cGUtbmV0d29yay1vZmkiLFsibG9hZE9yZGVyIl09Myxwcm9wVD17fSxbInN0YWNrRGVwdGgiXT0xLFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJjcmF5cGUtbmV0d29yay1vZmkiLH0sWyJjcmF5cGUteDg2LXJvbWUiXT17WyJmbiJdPSIvb3B0L2NyYXkvcGUvbG1vZC9tb2R1bGVmaWxlcy9jcmF5cGUtdGFyZ2V0cy9kZWZhdWx0L2NyYXlwZS14ODYtcm9tZS5sdWEiLFsiZnVsbE5hbWUiXT0iY3JheXBlLXg4Ni1yb21lIixbImxvYWRPcmRlciJdPTEscHJvcFQ9;' export '_ModuleTable004_;' '_ModuleTable005_=e30sWyJzdGFja0RlcHRoIl09MSxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0iY3JheXBlLXg4Ni1yb21lIix9LGVudnZhcj17WyJmbiJdPSIvYXBwcy9wcm9kL2xtb2R1bGVzL3N5c19jb3JlL2VudnZhci8xLjAiLFsiZnVsbE5hbWUiXT0iZW52dmFyLzEuMCIsWyJsb2FkT3JkZXIiXT00LHByb3BUPXt9LFsic3RhY2tEZXB0aCJdPTAsWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09ImVudnZhci8xLjAiLH0saW50ZWw9e1siZm4iXT0iL2FwcHMvcHJvZC9sbW9kdWxlcy9jb3JlL2ludGVsLzE5LjEuMy4zMDQubHVhIixbImZ1bGxOYW1lIl09ImludGVsLzE5LjEuMy4zMDQiLFsibG9hZE9yZGVyIl09Nyxwcm9wVD17fSxbInN0YWNrRGVwdGgiXT0xLFsi;' export '_ModuleTable005_;' '_ModuleTable006_=c3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJpbnRlbC8xOS4xLjMuMzA0Iix9LGxpYmZhYnJpYz17WyJmbiJdPSIvb3B0L2NyYXkvbW9kdWxlZmlsZXMvbGliZmFicmljLzEuMTEuMC4wLiIsWyJmdWxsTmFtZSJdPSJsaWJmYWJyaWMvMS4xMS4wLjAuIixbImxvYWRPcmRlciJdPTIscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MixbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0ibGliZmFicmljIix9LH0sbXBhdGhBPXsiL2FwcHMvb3BzL3Byb2QvbmNvL21vZHVsZWZpbGVzL2NvbXBpbGVyL2ludGVsLzE5LjEuMy4zMDQiLCIvYXBwcy9vcHMvcHJvZC9saWJzL21vZHVsZWZpbGVzL2NvbXBpbGVyL2ludGVsLzE5LjEuMy4zMDQiLCIvYXBwcy9wcm9kL2xtb2R1;' export '_ModuleTable006_;' '_ModuleTable007_=bGVzL2ludGVsLzE5LjEuMy4zMDQiLCIvb3B0L2NyYXkvcGUvbG1vZC9tb2R1bGVmaWxlcy9jb21uZXQvaW50ZWwvMTkuMC9vZmkvMS4wIiwiL2FwcHMvcHJvZC9sbW9kdWxlcy9jb21waWxlci9pbnRlbC8xOS4wIiwiL2xmcy9oMS9vcHMvcHJvZC9wYWNrYWdlcy9hbXN1X2VzdGltYXRpb24udjEuMy4wL3NvcmMiLCIvb3B0L2NyYXkvcGUvbG1vZC9tb2R1bGVmaWxlcy9uZXQvb2ZpLzEuMCIsIi9vcHQvY3JheS9wZS9sbW9kL21vZHVsZWZpbGVzL2NwdS94ODYtcm9tZS8xLjAiLCIvdXNyL3NoYXJlL21vZHVsZXMiLCIvdXNyL3NoYXJlL01vZHVsZXMvJE1PRFVMRV9WRVJTSU9OL21vZHVsZWZpbGVzIiwiL3Vzci9zaGFyZS9tb2R1bGVzL21vZHVsZWZpbGVzIiwiL3Vzci9zaGFy;' export '_ModuleTable007_;' '_ModuleTable008_=ZS9tb2R1bGVmaWxlcy9MaW51eCIsIi91c3Ivc2hhcmUvbW9kdWxlZmlsZXMvQ29yZSIsIi91c3Ivc2hhcmUvbG1vZC9sbW9kL21vZHVsZWZpbGVzL0NvcmUiLCIvb3B0L2NyYXkvcGUvbG1vZC9tb2R1bGVmaWxlcy9jb3JlIiwiL29wdC9jcmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvY3JheXBlLXRhcmdldHMvZGVmYXVsdCIsIi9hcHBzL3Byb2QvbG1vZHVsZXMvc3lzX2NvcmUiLCIvYXBwcy9vcHMvcHJvZC9uY28vbW9kdWxlZmlsZXMvY29yZSIsIi9hcHBzL3Byb2QvbG1vZHVsZXMvY29yZSIsIi9vcHQvY3JheS9tb2R1bGVmaWxlcyIsIi9vcHQvbW9kdWxlZmlsZXMiLH0sWyJzeXN0ZW1CYXNlTVBBVEgiXT0iL3Vzci9zaGFyZS9tb2R1bGVzOi91c3Ivc2hhcmUvTW9kdWxlcy8k;' export '_ModuleTable008_;' '_ModuleTable009_=TU9EVUxFX1ZFUlNJT04vbW9kdWxlZmlsZXM6L3Vzci9zaGFyZS9tb2R1bGVzL21vZHVsZWZpbGVzOi91c3Ivc2hhcmUvbW9kdWxlZmlsZXMvTGludXg6L3Vzci9zaGFyZS9tb2R1bGVmaWxlcy9Db3JlOi91c3Ivc2hhcmUvbG1vZC9sbW9kL21vZHVsZWZpbGVzL0NvcmU6L29wdC9jcmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvY29yZTovb3B0L2NyYXkvcGUvbG1vZC9tb2R1bGVmaWxlcy9jcmF5cGUtdGFyZ2V0cy9kZWZhdWx0Oi9hcHBzL3Byb2QvbG1vZHVsZXMvc3lzX2NvcmU6L2FwcHMvb3BzL3Byb2QvbmNvL21vZHVsZWZpbGVzL2NvcmU6L2FwcHMvcHJvZC9sbW9kdWxlcy9jb3JlOi9vcHQvY3JheS9tb2R1bGVmaWxlczovb3B0L21vZHVsZWZpbGVzIix9;' export '_ModuleTable009_;' '_ModuleTable_Sz_=9;' export '_ModuleTable_Sz_;' 'bufr_ROOT=/apps/ops/prod/libs/intel/19.1.3.304/bufr/11.5.0;' export 'bufr_ROOT;' 'bufr_VERSION=11.5.0;' export 'bufr_VERSION;'
+++ BUFR_INC4=/apps/ops/prod/libs/intel/19.1.3.304/bufr/11.5.0/include_4
+++ export BUFR_INC4
+++ BUFR_INC4_DA=/apps/ops/prod/libs/intel/19.1.3.304/bufr/11.5.0/include_4_DA
+++ export BUFR_INC4_DA
+++ BUFR_INC8=/apps/ops/prod/libs/intel/19.1.3.304/bufr/11.5.0/include_8
+++ export BUFR_INC8
+++ BUFR_INC8_DA=/apps/ops/prod/libs/intel/19.1.3.304/bufr/11.5.0/include_8_DA
+++ export BUFR_INC8_DA
+++ BUFR_INCd=/apps/ops/prod/libs/intel/19.1.3.304/bufr/11.5.0/include_d
+++ export BUFR_INCd
+++ BUFR_INCd_DA=/apps/ops/prod/libs/intel/19.1.3.304/bufr/11.5.0/include_d_DA
+++ export BUFR_INCd_DA
+++ BUFR_LIB4=/apps/ops/prod/libs/intel/19.1.3.304/bufr/11.5.0/lib64/libbufr_4.a
+++ export BUFR_LIB4
+++ BUFR_LIB4_DA=/apps/ops/prod/libs/intel/19.1.3.304/bufr/11.5.0/lib64/libbufr_4_DA.a
+++ export BUFR_LIB4_DA
+++ BUFR_LIB8=/apps/ops/prod/libs/intel/19.1.3.304/bufr/11.5.0/lib64/libbufr_8.a
+++ export BUFR_LIB8
+++ BUFR_LIB8_DA=/apps/ops/prod/libs/intel/19.1.3.304/bufr/11.5.0/lib64/libbufr_8_DA.a
+++ export BUFR_LIB8_DA
+++ BUFR_LIBd=/apps/ops/prod/libs/intel/19.1.3.304/bufr/11.5.0/lib64/libbufr_d.a
+++ export BUFR_LIBd
+++ BUFR_LIBd_DA=/apps/ops/prod/libs/intel/19.1.3.304/bufr/11.5.0/lib64/libbufr_d_DA.a
+++ export BUFR_LIBd_DA
+++ __LMOD_REF_COUNT_CLASSPATH=/pe/intel/compilers_and_libraries_2020.4.304/linux/mpi/intel64/lib/mpi.jar:1
+++ export __LMOD_REF_COUNT_CLASSPATH
+++ CLASSPATH=/pe/intel/compilers_and_libraries_2020.4.304/linux/mpi/intel64/lib/mpi.jar
+++ export CLASSPATH
+++ __LMOD_REF_COUNT_CPATH='/pe/intel/compilers_and_libraries_2020.4.304/linux/ipp/include:1;/pe/intel/compilers_and_libraries_2020.4.304/linux/mkl/include:1;/pe/intel/compilers_and_libraries_2020.4.304/linux/pstl/include:1;/pe/intel/compilers_and_libraries_2020.4.304/linux/pstl/stdlib:1;/pe/intel/compilers_and_libraries_2020.4.304/linux/tbb/include:2'
+++ export __LMOD_REF_COUNT_CPATH
+++ CPATH=/pe/intel/compilers_and_libraries_2020.4.304/linux/ipp/include:/pe/intel/compilers_and_libraries_2020.4.304/linux/mkl/include:/pe/intel/compilers_and_libraries_2020.4.304/linux/pstl/include:/pe/intel/compilers_and_libraries_2020.4.304/linux/pstl/stdlib:/pe/intel/compilers_and_libraries_2020.4.304/linux/tbb/include
+++ export CPATH
+++ CRAYPE_DIR=/opt/cray/pe/craype/2.7.10
+++ export CRAYPE_DIR
+++ CRAYPE_VERSION=2.7.10
+++ export CRAYPE_VERSION
+++ CRAY_LMOD_COMPILER=intel/19.0
+++ export CRAY_LMOD_COMPILER
+++ __LMOD_REF_COUNT_INFOPATH='/pe/intel/documentation_2020/en/debugger/gdb-ia/info:1;/apps/docs/info:1'
+++ export __LMOD_REF_COUNT_INFOPATH
+++ INFOPATH=/pe/intel/documentation_2020/en/debugger/gdb-ia/info::/apps/docs/info
+++ export INFOPATH
+++ __LMOD_REF_COUNT_INTEL_LICENSE_FILE='/pe/intel/compilers_and_libraries_2020.4.304/linux/licenses:1;/opt/intel/licenses:1;/intel/licenses:1'
+++ export __LMOD_REF_COUNT_INTEL_LICENSE_FILE
+++ INTEL_LICENSE_FILE=/pe/intel/compilers_and_libraries_2020.4.304/linux/licenses:/opt/intel/licenses:/intel/licenses
+++ export INTEL_LICENSE_FILE
+++ INTEL_MAJOR_VERSION=19.1
+++ export INTEL_MAJOR_VERSION
+++ INTEL_MINOR_VERSION=3.304
+++ export INTEL_MINOR_VERSION
+++ INTEL_PATH=/pe/intel/compilers_and_libraries_2020.4.304
+++ export INTEL_PATH
+++ INTEL_PYTHONHOME=/pe/intel/debugger_2020/python/intel64/
+++ export INTEL_PYTHONHOME
+++ INTEL_VERSION=19.1.3.304
+++ export INTEL_VERSION
+++ IPPROOT=/pe/intel/compilers_and_libraries_2020.4.304/linux/ipp
+++ export IPPROOT
+++ I_MPI_ROOT=/pe/intel/compilers_and_libraries_2020.4.304/linux/mpi
+++ export I_MPI_ROOT
+++ __LMOD_REF_COUNT_LD_LIBRARY_PATH='/pe/intel/compilers_and_libraries_2020.4.304/linux/compiler/lib/intel64_lin:1;/pe/intel/compilers_and_libraries_2020.4.304/linux/mpi/intel64/lib/release:1;/pe/intel/compilers_and_libraries_2020.4.304/linux/mpi/intel64/lib:1;/pe/intel/compilers_and_libraries_2020.4.304/linux/ipp/lib/intel64:1;/pe/intel/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64_lin:1;/pe/intel/compilers_and_libraries_2020.4.304/linux/tbb/lib/intel64/gcc4.8:1;/pe/intel/debugger_2020/python/intel64/lib:1;/pe/intel/debugger_2020/libipt/intel64/lib:1;/opt/cray/libfabric/1.11.0.0./lib64:1'
+++ export __LMOD_REF_COUNT_LD_LIBRARY_PATH
+++ LD_LIBRARY_PATH=/pe/intel/compilers_and_libraries_2020.4.304/linux/compiler/lib/intel64_lin:/pe/intel/compilers_and_libraries_2020.4.304/linux/mpi/intel64/lib/release:/pe/intel/compilers_and_libraries_2020.4.304/linux/mpi/intel64/lib:/pe/intel/compilers_and_libraries_2020.4.304/linux/ipp/lib/intel64:/pe/intel/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64_lin:/pe/intel/compilers_and_libraries_2020.4.304/linux/tbb/lib/intel64/gcc4.8:/pe/intel/debugger_2020/python/intel64/lib:/pe/intel/debugger_2020/libipt/intel64/lib:/opt/cray/libfabric/1.11.0.0./lib64
+++ export LD_LIBRARY_PATH
+++ __LMOD_REF_COUNT_LIBRARY_PATH='/pe/intel/compilers_and_libraries_2020.4.304/linux/ipp/lib/intel64:1;/pe/intel/compilers_and_libraries_2020.4.304/linux/compiler/lib/intel64_lin:1;/pe/intel/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64_lin:1;/pe/intel/compilers_and_libraries_2020.4.304/linux/tbb/lib/intel64/gcc4.8:2'
+++ export __LMOD_REF_COUNT_LIBRARY_PATH
+++ LIBRARY_PATH=/pe/intel/compilers_and_libraries_2020.4.304/linux/ipp/lib/intel64:/pe/intel/compilers_and_libraries_2020.4.304/linux/compiler/lib/intel64_lin:/pe/intel/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64_lin:/pe/intel/compilers_and_libraries_2020.4.304/linux/tbb/lib/intel64/gcc4.8
+++ export LIBRARY_PATH
+++ __LMOD_REF_COUNT_LMOD_CUSTOM_PATHS='COMPILER/apps/ops/prod/nco/modulefiles/compiler/intel/19.1.3.304:1;COMPILER/apps/ops/prod/libs/modulefiles/compiler/intel/19.1.3.304:1;COMPILER/apps/prod/lmodules/intel/19.1.3.304:1'
+++ export __LMOD_REF_COUNT_LMOD_CUSTOM_PATHS
+++ LMOD_CUSTOM_PATHS=COMPILER/apps/ops/prod/nco/modulefiles/compiler/intel/19.1.3.304:COMPILER/apps/ops/prod/libs/modulefiles/compiler/intel/19.1.3.304:COMPILER/apps/prod/lmodules/intel/19.1.3.304
+++ export LMOD_CUSTOM_PATHS
+++ LMOD_FAMILY_COMPILER=intel
+++ export LMOD_FAMILY_COMPILER
+++ LMOD_FAMILY_COMPILER_VERSION=19.1.3.304
+++ export LMOD_FAMILY_COMPILER_VERSION
+++ LMOD_FAMILY_CRAYPE=craype
+++ export LMOD_FAMILY_CRAYPE
+++ LMOD_FAMILY_CRAYPE_VERSION=2.7.10
+++ export LMOD_FAMILY_CRAYPE_VERSION
+++ LMOD_FAMILY_PRGENV=PrgEnv-intel
+++ export LMOD_FAMILY_PRGENV
+++ LMOD_FAMILY_PRGENV_VERSION=8.1.0
+++ export LMOD_FAMILY_PRGENV_VERSION
+++ __LMOD_REF_COUNT_LOADEDMODULES='craype-x86-rome:1;libfabric/1.11.0.0.:1;craype-network-ofi:1;envvar/1.0:1;PrgEnv-intel/8.1.0:1;craype/2.7.10:1;intel/19.1.3.304:1;bufr/11.5.0:1;build-amsu_estimation.module:1'
+++ export __LMOD_REF_COUNT_LOADEDMODULES
+++ LOADEDMODULES=craype-x86-rome:libfabric/1.11.0.0.:craype-network-ofi:envvar/1.0:PrgEnv-intel/8.1.0:craype/2.7.10:intel/19.1.3.304:bufr/11.5.0:build-amsu_estimation.module
+++ export LOADEDMODULES
+++ __LMOD_REF_COUNT_MANPATH='/pe/intel/man/common:1;/pe/intel/compilers_and_libraries_2020.4.304/linux/mpi/man:1;/pe/intel/documentation_2020/en/debugger/gdb-ia/man:1;/opt/cray/pe/craype/2.7.10/man:1;/opt/cray/libfabric/1.11.0.0./share/man:1;/usr/share/lmod/lmod/share/man:1;/usr/share/man:1;/opt/pbs/share/man:1;/opt/clmgr/man:1;/opt/sgi/share/man:1;/opt/clmgr/share/man:1;/opt/clmgr/lib/cm-cli/man:1'
+++ export __LMOD_REF_COUNT_MANPATH
+++ MANPATH=/pe/intel/man/common:/pe/intel/compilers_and_libraries_2020.4.304/linux/mpi/man:/pe/intel/documentation_2020/en/debugger/gdb-ia/man:/opt/cray/pe/craype/2.7.10/man:/opt/cray/libfabric/1.11.0.0./share/man:/usr/share/lmod/lmod/share/man:/usr/share/man:/opt/pbs/share/man:/opt/clmgr/man:/opt/sgi/share/man:/opt/clmgr/share/man:/opt/clmgr/lib/cm-cli/man
+++ export MANPATH
+++ MKLROOT=/pe/intel/compilers_and_libraries_2020.4.304/linux/mkl
+++ export MKLROOT
+++ __LMOD_REF_COUNT_MODULEPATH='/apps/ops/prod/nco/modulefiles/compiler/intel/19.1.3.304:1;/apps/ops/prod/libs/modulefiles/compiler/intel/19.1.3.304:1;/apps/prod/lmodules/intel/19.1.3.304:1;/opt/cray/pe/lmod/modulefiles/comnet/intel/19.0/ofi/1.0:1;/apps/prod/lmodules/compiler/intel/19.0:1;/lfs/h1/ops/prod/packages/amsu_estimation.v1.3.0/sorc:1;/opt/cray/pe/lmod/modulefiles/net/ofi/1.0:1;/opt/cray/pe/lmod/modulefiles/cpu/x86-rome/1.0:1;/usr/share/modules:1;/usr/share/Modules/$MODULE_VERSION/modulefiles:1;/usr/share/modules/modulefiles:1;/usr/share/modulefiles/Linux:1;/usr/share/modulefiles/Core:1;/usr/share/lmod/lmod/modulefiles/Core:1;/opt/cray/pe/lmod/modulefiles/core:1;/opt/cray/pe/lmod/modulefiles/craype-targets/default:1;/apps/prod/lmodules/sys_core:1;/apps/ops/prod/nco/modulefiles/core:1;/apps/prod/lmodules/core:1;/opt/cray/modulefiles:1;/opt/modulefiles:1'
+++ export __LMOD_REF_COUNT_MODULEPATH
+++ MODULEPATH='/apps/ops/prod/nco/modulefiles/compiler/intel/19.1.3.304:/apps/ops/prod/libs/modulefiles/compiler/intel/19.1.3.304:/apps/prod/lmodules/intel/19.1.3.304:/opt/cray/pe/lmod/modulefiles/comnet/intel/19.0/ofi/1.0:/apps/prod/lmodules/compiler/intel/19.0:/lfs/h1/ops/prod/packages/amsu_estimation.v1.3.0/sorc:/opt/cray/pe/lmod/modulefiles/net/ofi/1.0:/opt/cray/pe/lmod/modulefiles/cpu/x86-rome/1.0:/usr/share/modules:/usr/share/Modules/$MODULE_VERSION/modulefiles:/usr/share/modules/modulefiles:/usr/share/modulefiles/Linux:/usr/share/modulefiles/Core:/usr/share/lmod/lmod/modulefiles/Core:/opt/cray/pe/lmod/modulefiles/core:/opt/cray/pe/lmod/modulefiles/craype-targets/default:/apps/prod/lmodules/sys_core:/apps/ops/prod/nco/modulefiles/core:/apps/prod/lmodules/core:/opt/cray/modulefiles:/opt/modulefiles'
+++ export MODULEPATH
+++ __LMOD_REF_COUNT_NLSPATH='/pe/intel/compilers_and_libraries_2020.4.304/linux/compiler/lib/intel64/locale/%l_%t/%N:1;/pe/intel/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64_lin/locale/%l_%t/%N:1;/pe/intel/debugger_2020/gdb/intel64/share/locale/%l_%t/%N:1'
+++ export __LMOD_REF_COUNT_NLSPATH
+++ NLSPATH=/pe/intel/compilers_and_libraries_2020.4.304/linux/compiler/lib/intel64/locale/%l_%t/%N:/pe/intel/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64_lin/locale/%l_%t/%N:/pe/intel/debugger_2020/gdb/intel64/share/locale/%l_%t/%N
+++ export NLSPATH
+++ __LMOD_REF_COUNT_PATH='/apps/ops/prod/libs/intel/19.1.3.304/bufr/11.5.0/bin:1;/pe/intel/compilers_and_libraries_2020.4.304/linux/bin/intel64:1;/pe/intel/compilers_and_libraries_2020.4.304/linux/bin:1;/pe/intel/compilers_and_libraries_2020.4.304/linux/mpi/intel64/bin:1;/pe/intel/debugger_2020/gdb/intel64/bin:1;/opt/cray/pe/craype/2.7.10/bin:1;/opt/cray/libfabric/1.11.0.0./bin:1;/opt/clmgr/sbin:1;/opt/clmgr/bin:1;/opt/sgi/sbin:1;/opt/sgi/bin:1;/usr/local/bin:1;/usr/bin:1;/bin:2;/usr/lib/mit/bin:1;/usr/lib/mit/sbin:1;/opt/pbs/bin:1;/sbin:1;/opt/cray/pe/bin:1'
+++ export __LMOD_REF_COUNT_PATH
+++ PATH=/apps/ops/prod/libs/intel/19.1.3.304/bufr/11.5.0/bin:/pe/intel/compilers_and_libraries_2020.4.304/linux/bin/intel64:/pe/intel/compilers_and_libraries_2020.4.304/linux/bin:/pe/intel/compilers_and_libraries_2020.4.304/linux/mpi/intel64/bin:/pe/intel/debugger_2020/gdb/intel64/bin:/opt/cray/pe/craype/2.7.10/bin:/opt/cray/libfabric/1.11.0.0./bin:/opt/clmgr/sbin:/opt/clmgr/bin:/opt/sgi/sbin:/opt/sgi/bin:/usr/local/bin:/usr/bin:/bin:/usr/lib/mit/bin:/usr/lib/mit/sbin:/opt/pbs/bin:/sbin:/opt/cray/pe/bin
+++ export PATH
+++ PE_ENV=INTEL
+++ export PE_ENV
+++ __LMOD_REF_COUNT_PE_PRODUCT_LIST='CRAYPE:1;CRAYPE_X86_ROME:1'
+++ export __LMOD_REF_COUNT_PE_PRODUCT_LIST
+++ PE_PRODUCT_LIST=CRAYPE:CRAYPE_X86_ROME
+++ export PE_PRODUCT_LIST
+++ PKGCONFIG_ENABLED=1
+++ export PKGCONFIG_ENABLED
+++ __LMOD_REF_COUNT_PKG_CONFIG_PATH='/pe/intel/compilers_and_libraries_2020.4.304/linux/mkl/bin/pkgconfig:1;/opt/cray/pe/craype/2.7.10/pkg-config:1;/opt/cray/libfabric/1.11.0.0./lib64/pkgconfig:1'
+++ export __LMOD_REF_COUNT_PKG_CONFIG_PATH
+++ PKG_CONFIG_PATH=/pe/intel/compilers_and_libraries_2020.4.304/linux/mkl/bin/pkgconfig:/opt/cray/pe/craype/2.7.10/pkg-config:/opt/cray/libfabric/1.11.0.0./lib64/pkgconfig
+++ export PKG_CONFIG_PATH
+++ PSTLROOT=/pe/intel/compilers_and_libraries_2020.4.304/linux/pstl
+++ export PSTLROOT
+++ TBBROOT=/pe/intel/compilers_and_libraries_2020.4.304/linux/tbb
+++ export TBBROOT
+++ __LMOD_REF_COUNT__LMFILES_='/opt/cray/pe/lmod/modulefiles/craype-targets/default/craype-x86-rome.lua:1;/opt/cray/modulefiles/libfabric/1.11.0.0.:1;/opt/cray/pe/lmod/modulefiles/craype-targets/default/craype-network-ofi.lua:1;/apps/prod/lmodules/sys_core/envvar/1.0:1;/opt/cray/pe/lmod/modulefiles/core/PrgEnv-intel/8.1.0.lua:1;/opt/cray/pe/lmod/modulefiles/core/craype/2.7.10.lua:1;/apps/prod/lmodules/core/intel/19.1.3.304.lua:1;/apps/ops/prod/libs/modulefiles/compiler/intel/19.1.3.304/bufr/11.5.0.lua:1;/lfs/h1/ops/prod/packages/amsu_estimation.v1.3.0/sorc/build-amsu_estimation.module.lua:1'
+++ export __LMOD_REF_COUNT__LMFILES_
+++ _LMFILES_=/opt/cray/pe/lmod/modulefiles/craype-targets/default/craype-x86-rome.lua:/opt/cray/modulefiles/libfabric/1.11.0.0.:/opt/cray/pe/lmod/modulefiles/craype-targets/default/craype-network-ofi.lua:/apps/prod/lmodules/sys_core/envvar/1.0:/opt/cray/pe/lmod/modulefiles/core/PrgEnv-intel/8.1.0.lua:/opt/cray/pe/lmod/modulefiles/core/craype/2.7.10.lua:/apps/prod/lmodules/core/intel/19.1.3.304.lua:/apps/ops/prod/libs/modulefiles/compiler/intel/19.1.3.304/bufr/11.5.0.lua:/lfs/h1/ops/prod/packages/amsu_estimation.v1.3.0/sorc/build-amsu_estimation.module.lua
+++ export _LMFILES_
+++ _ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJNVHZlcnNpb24iXT0zLFsiY19yZWJ1aWxkVGltZSJdPWZhbHNlLFsiY19zaG9ydFRpbWUiXT1mYWxzZSxkZXB0aFQ9e30sZmFtaWx5PXtbIlByZ0VudiJdPSJQcmdFbnYtaW50ZWwiLFsiY29tcGlsZXIiXT0iaW50ZWwiLFsiY3JheXBlIl09ImNyYXlwZSIsWyJjcmF5cGVfY3B1Il09ImNyYXlwZS14ODYtcm9tZSIsWyJjcmF5cGVfbmV0d29yayJdPSJjcmF5cGUtbmV0d29yay1vZmkiLH0sbVQ9e1siUHJnRW52LWludGVsIl09e1siZm4iXT0iL29wdC9jcmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvY29yZS9QcmdFbnYtaW50ZWwvOC4xLjAubHVhIixbImZ1bGxOYW1lIl09IlByZ0Vudi1pbnRlbC84LjEuMCIsWyJsb2FkT3JkZXIiXT01LHByb3BUPXt9
+++ export _ModuleTable001_
+++ _ModuleTable002_=LFsic3RhY2tEZXB0aCJdPTEsWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09IlByZ0Vudi1pbnRlbC84LjEuMCIsfSxidWZyPXtbImZuIl09Ii9hcHBzL29wcy9wcm9kL2xpYnMvbW9kdWxlZmlsZXMvY29tcGlsZXIvaW50ZWwvMTkuMS4zLjMwNC9idWZyLzExLjUuMC5sdWEiLFsiZnVsbE5hbWUiXT0iYnVmci8xMS41LjAiLFsibG9hZE9yZGVyIl09OCxwcm9wVD17fSxbInN0YWNrRGVwdGgiXT0xLFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJidWZyLzExLjUuMCIsfSxbImJ1aWxkLWFtc3VfZXN0aW1hdGlvbi5tb2R1bGUiXT17WyJmbiJdPSIvbGZzL2gxL29wcy9wcm9kL3BhY2thZ2VzL2Ftc3VfZXN0aW1hdGlvbi52MS4zLjAvc29yYy9idWlsZC1h
+++ export _ModuleTable002_
+++ _ModuleTable003_=bXN1X2VzdGltYXRpb24ubW9kdWxlLmx1YSIsWyJmdWxsTmFtZSJdPSJidWlsZC1hbXN1X2VzdGltYXRpb24ubW9kdWxlIixbImxvYWRPcmRlciJdPTkscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MCxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0iYnVpbGQtYW1zdV9lc3RpbWF0aW9uLm1vZHVsZSIsfSxjcmF5cGU9e1siZm4iXT0iL29wdC9jcmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvY29yZS9jcmF5cGUvMi43LjEwLmx1YSIsWyJmdWxsTmFtZSJdPSJjcmF5cGUvMi43LjEwIixbImxvYWRPcmRlciJdPTYscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MSxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0iY3JheXBlLzIuNy4xMCIsfSxbImNyYXlwZS1uZXR3
+++ export _ModuleTable003_
+++ _ModuleTable004_=b3JrLW9maSJdPXtbImZuIl09Ii9vcHQvY3JheS9wZS9sbW9kL21vZHVsZWZpbGVzL2NyYXlwZS10YXJnZXRzL2RlZmF1bHQvY3JheXBlLW5ldHdvcmstb2ZpLmx1YSIsWyJmdWxsTmFtZSJdPSJjcmF5cGUtbmV0d29yay1vZmkiLFsibG9hZE9yZGVyIl09Myxwcm9wVD17fSxbInN0YWNrRGVwdGgiXT0xLFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJjcmF5cGUtbmV0d29yay1vZmkiLH0sWyJjcmF5cGUteDg2LXJvbWUiXT17WyJmbiJdPSIvb3B0L2NyYXkvcGUvbG1vZC9tb2R1bGVmaWxlcy9jcmF5cGUtdGFyZ2V0cy9kZWZhdWx0L2NyYXlwZS14ODYtcm9tZS5sdWEiLFsiZnVsbE5hbWUiXT0iY3JheXBlLXg4Ni1yb21lIixbImxvYWRPcmRlciJdPTEscHJvcFQ9
+++ export _ModuleTable004_
+++ _ModuleTable005_=e30sWyJzdGFja0RlcHRoIl09MSxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0iY3JheXBlLXg4Ni1yb21lIix9LGVudnZhcj17WyJmbiJdPSIvYXBwcy9wcm9kL2xtb2R1bGVzL3N5c19jb3JlL2VudnZhci8xLjAiLFsiZnVsbE5hbWUiXT0iZW52dmFyLzEuMCIsWyJsb2FkT3JkZXIiXT00LHByb3BUPXt9LFsic3RhY2tEZXB0aCJdPTAsWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09ImVudnZhci8xLjAiLH0saW50ZWw9e1siZm4iXT0iL2FwcHMvcHJvZC9sbW9kdWxlcy9jb3JlL2ludGVsLzE5LjEuMy4zMDQubHVhIixbImZ1bGxOYW1lIl09ImludGVsLzE5LjEuMy4zMDQiLFsibG9hZE9yZGVyIl09Nyxwcm9wVD17fSxbInN0YWNrRGVwdGgiXT0xLFsi
+++ export _ModuleTable005_
+++ _ModuleTable006_=c3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJpbnRlbC8xOS4xLjMuMzA0Iix9LGxpYmZhYnJpYz17WyJmbiJdPSIvb3B0L2NyYXkvbW9kdWxlZmlsZXMvbGliZmFicmljLzEuMTEuMC4wLiIsWyJmdWxsTmFtZSJdPSJsaWJmYWJyaWMvMS4xMS4wLjAuIixbImxvYWRPcmRlciJdPTIscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MixbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0ibGliZmFicmljIix9LH0sbXBhdGhBPXsiL2FwcHMvb3BzL3Byb2QvbmNvL21vZHVsZWZpbGVzL2NvbXBpbGVyL2ludGVsLzE5LjEuMy4zMDQiLCIvYXBwcy9vcHMvcHJvZC9saWJzL21vZHVsZWZpbGVzL2NvbXBpbGVyL2ludGVsLzE5LjEuMy4zMDQiLCIvYXBwcy9wcm9kL2xtb2R1
+++ export _ModuleTable006_
+++ _ModuleTable007_=bGVzL2ludGVsLzE5LjEuMy4zMDQiLCIvb3B0L2NyYXkvcGUvbG1vZC9tb2R1bGVmaWxlcy9jb21uZXQvaW50ZWwvMTkuMC9vZmkvMS4wIiwiL2FwcHMvcHJvZC9sbW9kdWxlcy9jb21waWxlci9pbnRlbC8xOS4wIiwiL2xmcy9oMS9vcHMvcHJvZC9wYWNrYWdlcy9hbXN1X2VzdGltYXRpb24udjEuMy4wL3NvcmMiLCIvb3B0L2NyYXkvcGUvbG1vZC9tb2R1bGVmaWxlcy9uZXQvb2ZpLzEuMCIsIi9vcHQvY3JheS9wZS9sbW9kL21vZHVsZWZpbGVzL2NwdS94ODYtcm9tZS8xLjAiLCIvdXNyL3NoYXJlL21vZHVsZXMiLCIvdXNyL3NoYXJlL01vZHVsZXMvJE1PRFVMRV9WRVJTSU9OL21vZHVsZWZpbGVzIiwiL3Vzci9zaGFyZS9tb2R1bGVzL21vZHVsZWZpbGVzIiwiL3Vzci9zaGFy
+++ export _ModuleTable007_
+++ _ModuleTable008_=ZS9tb2R1bGVmaWxlcy9MaW51eCIsIi91c3Ivc2hhcmUvbW9kdWxlZmlsZXMvQ29yZSIsIi91c3Ivc2hhcmUvbG1vZC9sbW9kL21vZHVsZWZpbGVzL0NvcmUiLCIvb3B0L2NyYXkvcGUvbG1vZC9tb2R1bGVmaWxlcy9jb3JlIiwiL29wdC9jcmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvY3JheXBlLXRhcmdldHMvZGVmYXVsdCIsIi9hcHBzL3Byb2QvbG1vZHVsZXMvc3lzX2NvcmUiLCIvYXBwcy9vcHMvcHJvZC9uY28vbW9kdWxlZmlsZXMvY29yZSIsIi9hcHBzL3Byb2QvbG1vZHVsZXMvY29yZSIsIi9vcHQvY3JheS9tb2R1bGVmaWxlcyIsIi9vcHQvbW9kdWxlZmlsZXMiLH0sWyJzeXN0ZW1CYXNlTVBBVEgiXT0iL3Vzci9zaGFyZS9tb2R1bGVzOi91c3Ivc2hhcmUvTW9kdWxlcy8k
+++ export _ModuleTable008_
+++ _ModuleTable009_=TU9EVUxFX1ZFUlNJT04vbW9kdWxlZmlsZXM6L3Vzci9zaGFyZS9tb2R1bGVzL21vZHVsZWZpbGVzOi91c3Ivc2hhcmUvbW9kdWxlZmlsZXMvTGludXg6L3Vzci9zaGFyZS9tb2R1bGVmaWxlcy9Db3JlOi91c3Ivc2hhcmUvbG1vZC9sbW9kL21vZHVsZWZpbGVzL0NvcmU6L29wdC9jcmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvY29yZTovb3B0L2NyYXkvcGUvbG1vZC9tb2R1bGVmaWxlcy9jcmF5cGUtdGFyZ2V0cy9kZWZhdWx0Oi9hcHBzL3Byb2QvbG1vZHVsZXMvc3lzX2NvcmU6L2FwcHMvb3BzL3Byb2QvbmNvL21vZHVsZWZpbGVzL2NvcmU6L2FwcHMvcHJvZC9sbW9kdWxlcy9jb3JlOi9vcHQvY3JheS9tb2R1bGVmaWxlczovb3B0L21vZHVsZWZpbGVzIix9
+++ export _ModuleTable009_
+++ _ModuleTable_Sz_=9
+++ export _ModuleTable_Sz_
+++ bufr_ROOT=/apps/ops/prod/libs/intel/19.1.3.304/bufr/11.5.0
+++ export bufr_ROOT
+++ bufr_VERSION=11.5.0
+++ export bufr_VERSION
+++ : -s sh
++ eval
++ module list
+++ /usr/share/lmod/lmod/libexec/lmod bash list
+
+Currently Loaded Modules:
+  1) craype-x86-rome (H)   2) libfabric/1.11.0.0. (H)   3) craype-network-ofi (H)   4) envvar/1.0   5) PrgEnv-intel/8.1.0   6) craype/2.7.10   7) intel/19.1.3.304   8) bufr/11.5.0   9) build-amsu_estimation.module
+
+  Where:
+   H:  Hidden Module
+
+ 
+
++ eval 'MODULEPATH=/apps/ops/prod/nco/modulefiles/compiler/intel/19.1.3.304:/apps/ops/prod/libs/modulefiles/compiler/intel/19.1.3.304:/apps/prod/lmodules/intel/19.1.3.304:/opt/cray/pe/lmod/modulefiles/comnet/intel/19.0/ofi/1.0:/apps/prod/lmodules/compiler/intel/19.0:/lfs/h1/ops/prod/packages/amsu_estimation.v1.3.0/sorc:/opt/cray/pe/lmod/modulefiles/net/ofi/1.0:/opt/cray/pe/lmod/modulefiles/cpu/x86-rome/1.0:/usr/share/modules:/usr/share/Modules/\$MODULE_VERSION/modulefiles:/usr/share/modules/modulefiles:/usr/share/modulefiles/Linux:/usr/share/modulefiles/Core:/usr/share/lmod/lmod/modulefiles/Core:/opt/cray/pe/lmod/modulefiles/core:/opt/cray/pe/lmod/modulefiles/craype-targets/default:/apps/prod/lmodules/sys_core:/apps/ops/prod/nco/modulefiles/core:/apps/prod/lmodules/core:/opt/cray/modulefiles:/opt/modulefiles;' export 'MODULEPATH;' '_ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJNVHZlcnNpb24iXT0zLFsiY19yZWJ1aWxkVGltZSJdPWZhbHNlLFsiY19zaG9ydFRpbWUiXT1mYWxzZSxkZXB0aFQ9e30sZmFtaWx5PXtbIlByZ0VudiJdPSJQcmdFbnYtaW50ZWwiLFsiY29tcGlsZXIiXT0iaW50ZWwiLFsiY3JheXBlIl09ImNyYXlwZSIsWyJjcmF5cGVfY3B1Il09ImNyYXlwZS14ODYtcm9tZSIsWyJjcmF5cGVfbmV0d29yayJdPSJjcmF5cGUtbmV0d29yay1vZmkiLH0sbVQ9e1siUHJnRW52LWludGVsIl09e1siZm4iXT0iL29wdC9jcmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvY29yZS9QcmdFbnYtaW50ZWwvOC4xLjAubHVhIixbImZ1bGxOYW1lIl09IlByZ0Vudi1pbnRlbC84LjEuMCIsWyJsb2FkT3JkZXIiXT01LHByb3BUPXt9;' export '_ModuleTable001_;' '_ModuleTable002_=LFsic3RhY2tEZXB0aCJdPTEsWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09IlByZ0Vudi1pbnRlbC84LjEuMCIsfSxidWZyPXtbImZuIl09Ii9hcHBzL29wcy9wcm9kL2xpYnMvbW9kdWxlZmlsZXMvY29tcGlsZXIvaW50ZWwvMTkuMS4zLjMwNC9idWZyLzExLjUuMC5sdWEiLFsiZnVsbE5hbWUiXT0iYnVmci8xMS41LjAiLFsibG9hZE9yZGVyIl09OCxwcm9wVD17fSxbInN0YWNrRGVwdGgiXT0xLFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJidWZyLzExLjUuMCIsfSxbImJ1aWxkLWFtc3VfZXN0aW1hdGlvbi5tb2R1bGUiXT17WyJmbiJdPSIvbGZzL2gxL29wcy9wcm9kL3BhY2thZ2VzL2Ftc3VfZXN0aW1hdGlvbi52MS4zLjAvc29yYy9idWlsZC1h;' export '_ModuleTable002_;' '_ModuleTable003_=bXN1X2VzdGltYXRpb24ubW9kdWxlLmx1YSIsWyJmdWxsTmFtZSJdPSJidWlsZC1hbXN1X2VzdGltYXRpb24ubW9kdWxlIixbImxvYWRPcmRlciJdPTkscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MCxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0iYnVpbGQtYW1zdV9lc3RpbWF0aW9uLm1vZHVsZSIsfSxjcmF5cGU9e1siZm4iXT0iL29wdC9jcmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvY29yZS9jcmF5cGUvMi43LjEwLmx1YSIsWyJmdWxsTmFtZSJdPSJjcmF5cGUvMi43LjEwIixbImxvYWRPcmRlciJdPTYscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MSxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0iY3JheXBlLzIuNy4xMCIsfSxbImNyYXlwZS1uZXR3;' export '_ModuleTable003_;' '_ModuleTable004_=b3JrLW9maSJdPXtbImZuIl09Ii9vcHQvY3JheS9wZS9sbW9kL21vZHVsZWZpbGVzL2NyYXlwZS10YXJnZXRzL2RlZmF1bHQvY3JheXBlLW5ldHdvcmstb2ZpLmx1YSIsWyJmdWxsTmFtZSJdPSJjcmF5cGUtbmV0d29yay1vZmkiLFsibG9hZE9yZGVyIl09Myxwcm9wVD17fSxbInN0YWNrRGVwdGgiXT0xLFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJjcmF5cGUtbmV0d29yay1vZmkiLH0sWyJjcmF5cGUteDg2LXJvbWUiXT17WyJmbiJdPSIvb3B0L2NyYXkvcGUvbG1vZC9tb2R1bGVmaWxlcy9jcmF5cGUtdGFyZ2V0cy9kZWZhdWx0L2NyYXlwZS14ODYtcm9tZS5sdWEiLFsiZnVsbE5hbWUiXT0iY3JheXBlLXg4Ni1yb21lIixbImxvYWRPcmRlciJdPTEscHJvcFQ9;' export '_ModuleTable004_;' '_ModuleTable005_=e30sWyJzdGFja0RlcHRoIl09MSxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0iY3JheXBlLXg4Ni1yb21lIix9LGVudnZhcj17WyJmbiJdPSIvYXBwcy9wcm9kL2xtb2R1bGVzL3N5c19jb3JlL2VudnZhci8xLjAiLFsiZnVsbE5hbWUiXT0iZW52dmFyLzEuMCIsWyJsb2FkT3JkZXIiXT00LHByb3BUPXt9LFsic3RhY2tEZXB0aCJdPTAsWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09ImVudnZhci8xLjAiLH0saW50ZWw9e1siZm4iXT0iL2FwcHMvcHJvZC9sbW9kdWxlcy9jb3JlL2ludGVsLzE5LjEuMy4zMDQubHVhIixbImZ1bGxOYW1lIl09ImludGVsLzE5LjEuMy4zMDQiLFsibG9hZE9yZGVyIl09Nyxwcm9wVD17fSxbInN0YWNrRGVwdGgiXT0xLFsi;' export '_ModuleTable005_;' '_ModuleTable006_=c3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJpbnRlbC8xOS4xLjMuMzA0Iix9LGxpYmZhYnJpYz17WyJmbiJdPSIvb3B0L2NyYXkvbW9kdWxlZmlsZXMvbGliZmFicmljLzEuMTEuMC4wLiIsWyJmdWxsTmFtZSJdPSJsaWJmYWJyaWMvMS4xMS4wLjAuIixbImxvYWRPcmRlciJdPTIscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MixbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0ibGliZmFicmljIix9LH0sbXBhdGhBPXsiL2FwcHMvb3BzL3Byb2QvbmNvL21vZHVsZWZpbGVzL2NvbXBpbGVyL2ludGVsLzE5LjEuMy4zMDQiLCIvYXBwcy9vcHMvcHJvZC9saWJzL21vZHVsZWZpbGVzL2NvbXBpbGVyL2ludGVsLzE5LjEuMy4zMDQiLCIvYXBwcy9wcm9kL2xtb2R1;' export '_ModuleTable006_;' '_ModuleTable007_=bGVzL2ludGVsLzE5LjEuMy4zMDQiLCIvb3B0L2NyYXkvcGUvbG1vZC9tb2R1bGVmaWxlcy9jb21uZXQvaW50ZWwvMTkuMC9vZmkvMS4wIiwiL2FwcHMvcHJvZC9sbW9kdWxlcy9jb21waWxlci9pbnRlbC8xOS4wIiwiL2xmcy9oMS9vcHMvcHJvZC9wYWNrYWdlcy9hbXN1X2VzdGltYXRpb24udjEuMy4wL3NvcmMiLCIvb3B0L2NyYXkvcGUvbG1vZC9tb2R1bGVmaWxlcy9uZXQvb2ZpLzEuMCIsIi9vcHQvY3JheS9wZS9sbW9kL21vZHVsZWZpbGVzL2NwdS94ODYtcm9tZS8xLjAiLCIvdXNyL3NoYXJlL21vZHVsZXMiLCIvdXNyL3NoYXJlL01vZHVsZXMvJE1PRFVMRV9WRVJTSU9OL21vZHVsZWZpbGVzIiwiL3Vzci9zaGFyZS9tb2R1bGVzL21vZHVsZWZpbGVzIiwiL3Vzci9zaGFy;' export '_ModuleTable007_;' '_ModuleTable008_=ZS9tb2R1bGVmaWxlcy9MaW51eCIsIi91c3Ivc2hhcmUvbW9kdWxlZmlsZXMvQ29yZSIsIi91c3Ivc2hhcmUvbG1vZC9sbW9kL21vZHVsZWZpbGVzL0NvcmUiLCIvb3B0L2NyYXkvcGUvbG1vZC9tb2R1bGVmaWxlcy9jb3JlIiwiL29wdC9jcmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvY3JheXBlLXRhcmdldHMvZGVmYXVsdCIsIi9hcHBzL3Byb2QvbG1vZHVsZXMvc3lzX2NvcmUiLCIvYXBwcy9vcHMvcHJvZC9uY28vbW9kdWxlZmlsZXMvY29yZSIsIi9hcHBzL3Byb2QvbG1vZHVsZXMvY29yZSIsIi9vcHQvY3JheS9tb2R1bGVmaWxlcyIsIi9vcHQvbW9kdWxlZmlsZXMiLH0sWyJzeXN0ZW1CYXNlTVBBVEgiXT0iL3Vzci9zaGFyZS9tb2R1bGVzOi91c3Ivc2hhcmUvTW9kdWxlcy8k;' export '_ModuleTable008_;' '_ModuleTable009_=TU9EVUxFX1ZFUlNJT04vbW9kdWxlZmlsZXM6L3Vzci9zaGFyZS9tb2R1bGVzL21vZHVsZWZpbGVzOi91c3Ivc2hhcmUvbW9kdWxlZmlsZXMvTGludXg6L3Vzci9zaGFyZS9tb2R1bGVmaWxlcy9Db3JlOi91c3Ivc2hhcmUvbG1vZC9sbW9kL21vZHVsZWZpbGVzL0NvcmU6L29wdC9jcmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvY29yZTovb3B0L2NyYXkvcGUvbG1vZC9tb2R1bGVmaWxlcy9jcmF5cGUtdGFyZ2V0cy9kZWZhdWx0Oi9hcHBzL3Byb2QvbG1vZHVsZXMvc3lzX2NvcmU6L2FwcHMvb3BzL3Byb2QvbmNvL21vZHVsZWZpbGVzL2NvcmU6L2FwcHMvcHJvZC9sbW9kdWxlcy9jb3JlOi9vcHQvY3JheS9tb2R1bGVmaWxlczovb3B0L21vZHVsZWZpbGVzIix9;' export '_ModuleTable009_;' '_ModuleTable_Sz_=9;' export '_ModuleTable_Sz_;'
+++ MODULEPATH='/apps/ops/prod/nco/modulefiles/compiler/intel/19.1.3.304:/apps/ops/prod/libs/modulefiles/compiler/intel/19.1.3.304:/apps/prod/lmodules/intel/19.1.3.304:/opt/cray/pe/lmod/modulefiles/comnet/intel/19.0/ofi/1.0:/apps/prod/lmodules/compiler/intel/19.0:/lfs/h1/ops/prod/packages/amsu_estimation.v1.3.0/sorc:/opt/cray/pe/lmod/modulefiles/net/ofi/1.0:/opt/cray/pe/lmod/modulefiles/cpu/x86-rome/1.0:/usr/share/modules:/usr/share/Modules/$MODULE_VERSION/modulefiles:/usr/share/modules/modulefiles:/usr/share/modulefiles/Linux:/usr/share/modulefiles/Core:/usr/share/lmod/lmod/modulefiles/Core:/opt/cray/pe/lmod/modulefiles/core:/opt/cray/pe/lmod/modulefiles/craype-targets/default:/apps/prod/lmodules/sys_core:/apps/ops/prod/nco/modulefiles/core:/apps/prod/lmodules/core:/opt/cray/modulefiles:/opt/modulefiles'
+++ export MODULEPATH
+++ _ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJNVHZlcnNpb24iXT0zLFsiY19yZWJ1aWxkVGltZSJdPWZhbHNlLFsiY19zaG9ydFRpbWUiXT1mYWxzZSxkZXB0aFQ9e30sZmFtaWx5PXtbIlByZ0VudiJdPSJQcmdFbnYtaW50ZWwiLFsiY29tcGlsZXIiXT0iaW50ZWwiLFsiY3JheXBlIl09ImNyYXlwZSIsWyJjcmF5cGVfY3B1Il09ImNyYXlwZS14ODYtcm9tZSIsWyJjcmF5cGVfbmV0d29yayJdPSJjcmF5cGUtbmV0d29yay1vZmkiLH0sbVQ9e1siUHJnRW52LWludGVsIl09e1siZm4iXT0iL29wdC9jcmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvY29yZS9QcmdFbnYtaW50ZWwvOC4xLjAubHVhIixbImZ1bGxOYW1lIl09IlByZ0Vudi1pbnRlbC84LjEuMCIsWyJsb2FkT3JkZXIiXT01LHByb3BUPXt9
+++ export _ModuleTable001_
+++ _ModuleTable002_=LFsic3RhY2tEZXB0aCJdPTEsWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09IlByZ0Vudi1pbnRlbC84LjEuMCIsfSxidWZyPXtbImZuIl09Ii9hcHBzL29wcy9wcm9kL2xpYnMvbW9kdWxlZmlsZXMvY29tcGlsZXIvaW50ZWwvMTkuMS4zLjMwNC9idWZyLzExLjUuMC5sdWEiLFsiZnVsbE5hbWUiXT0iYnVmci8xMS41LjAiLFsibG9hZE9yZGVyIl09OCxwcm9wVD17fSxbInN0YWNrRGVwdGgiXT0xLFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJidWZyLzExLjUuMCIsfSxbImJ1aWxkLWFtc3VfZXN0aW1hdGlvbi5tb2R1bGUiXT17WyJmbiJdPSIvbGZzL2gxL29wcy9wcm9kL3BhY2thZ2VzL2Ftc3VfZXN0aW1hdGlvbi52MS4zLjAvc29yYy9idWlsZC1h
+++ export _ModuleTable002_
+++ _ModuleTable003_=bXN1X2VzdGltYXRpb24ubW9kdWxlLmx1YSIsWyJmdWxsTmFtZSJdPSJidWlsZC1hbXN1X2VzdGltYXRpb24ubW9kdWxlIixbImxvYWRPcmRlciJdPTkscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MCxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0iYnVpbGQtYW1zdV9lc3RpbWF0aW9uLm1vZHVsZSIsfSxjcmF5cGU9e1siZm4iXT0iL29wdC9jcmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvY29yZS9jcmF5cGUvMi43LjEwLmx1YSIsWyJmdWxsTmFtZSJdPSJjcmF5cGUvMi43LjEwIixbImxvYWRPcmRlciJdPTYscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MSxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0iY3JheXBlLzIuNy4xMCIsfSxbImNyYXlwZS1uZXR3
+++ export _ModuleTable003_
+++ _ModuleTable004_=b3JrLW9maSJdPXtbImZuIl09Ii9vcHQvY3JheS9wZS9sbW9kL21vZHVsZWZpbGVzL2NyYXlwZS10YXJnZXRzL2RlZmF1bHQvY3JheXBlLW5ldHdvcmstb2ZpLmx1YSIsWyJmdWxsTmFtZSJdPSJjcmF5cGUtbmV0d29yay1vZmkiLFsibG9hZE9yZGVyIl09Myxwcm9wVD17fSxbInN0YWNrRGVwdGgiXT0xLFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJjcmF5cGUtbmV0d29yay1vZmkiLH0sWyJjcmF5cGUteDg2LXJvbWUiXT17WyJmbiJdPSIvb3B0L2NyYXkvcGUvbG1vZC9tb2R1bGVmaWxlcy9jcmF5cGUtdGFyZ2V0cy9kZWZhdWx0L2NyYXlwZS14ODYtcm9tZS5sdWEiLFsiZnVsbE5hbWUiXT0iY3JheXBlLXg4Ni1yb21lIixbImxvYWRPcmRlciJdPTEscHJvcFQ9
+++ export _ModuleTable004_
+++ _ModuleTable005_=e30sWyJzdGFja0RlcHRoIl09MSxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0iY3JheXBlLXg4Ni1yb21lIix9LGVudnZhcj17WyJmbiJdPSIvYXBwcy9wcm9kL2xtb2R1bGVzL3N5c19jb3JlL2VudnZhci8xLjAiLFsiZnVsbE5hbWUiXT0iZW52dmFyLzEuMCIsWyJsb2FkT3JkZXIiXT00LHByb3BUPXt9LFsic3RhY2tEZXB0aCJdPTAsWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09ImVudnZhci8xLjAiLH0saW50ZWw9e1siZm4iXT0iL2FwcHMvcHJvZC9sbW9kdWxlcy9jb3JlL2ludGVsLzE5LjEuMy4zMDQubHVhIixbImZ1bGxOYW1lIl09ImludGVsLzE5LjEuMy4zMDQiLFsibG9hZE9yZGVyIl09Nyxwcm9wVD17fSxbInN0YWNrRGVwdGgiXT0xLFsi
+++ export _ModuleTable005_
+++ _ModuleTable006_=c3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJpbnRlbC8xOS4xLjMuMzA0Iix9LGxpYmZhYnJpYz17WyJmbiJdPSIvb3B0L2NyYXkvbW9kdWxlZmlsZXMvbGliZmFicmljLzEuMTEuMC4wLiIsWyJmdWxsTmFtZSJdPSJsaWJmYWJyaWMvMS4xMS4wLjAuIixbImxvYWRPcmRlciJdPTIscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MixbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0ibGliZmFicmljIix9LH0sbXBhdGhBPXsiL2FwcHMvb3BzL3Byb2QvbmNvL21vZHVsZWZpbGVzL2NvbXBpbGVyL2ludGVsLzE5LjEuMy4zMDQiLCIvYXBwcy9vcHMvcHJvZC9saWJzL21vZHVsZWZpbGVzL2NvbXBpbGVyL2ludGVsLzE5LjEuMy4zMDQiLCIvYXBwcy9wcm9kL2xtb2R1
+++ export _ModuleTable006_
+++ _ModuleTable007_=bGVzL2ludGVsLzE5LjEuMy4zMDQiLCIvb3B0L2NyYXkvcGUvbG1vZC9tb2R1bGVmaWxlcy9jb21uZXQvaW50ZWwvMTkuMC9vZmkvMS4wIiwiL2FwcHMvcHJvZC9sbW9kdWxlcy9jb21waWxlci9pbnRlbC8xOS4wIiwiL2xmcy9oMS9vcHMvcHJvZC9wYWNrYWdlcy9hbXN1X2VzdGltYXRpb24udjEuMy4wL3NvcmMiLCIvb3B0L2NyYXkvcGUvbG1vZC9tb2R1bGVmaWxlcy9uZXQvb2ZpLzEuMCIsIi9vcHQvY3JheS9wZS9sbW9kL21vZHVsZWZpbGVzL2NwdS94ODYtcm9tZS8xLjAiLCIvdXNyL3NoYXJlL21vZHVsZXMiLCIvdXNyL3NoYXJlL01vZHVsZXMvJE1PRFVMRV9WRVJTSU9OL21vZHVsZWZpbGVzIiwiL3Vzci9zaGFyZS9tb2R1bGVzL21vZHVsZWZpbGVzIiwiL3Vzci9zaGFy
+++ export _ModuleTable007_
+++ _ModuleTable008_=ZS9tb2R1bGVmaWxlcy9MaW51eCIsIi91c3Ivc2hhcmUvbW9kdWxlZmlsZXMvQ29yZSIsIi91c3Ivc2hhcmUvbG1vZC9sbW9kL21vZHVsZWZpbGVzL0NvcmUiLCIvb3B0L2NyYXkvcGUvbG1vZC9tb2R1bGVmaWxlcy9jb3JlIiwiL29wdC9jcmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvY3JheXBlLXRhcmdldHMvZGVmYXVsdCIsIi9hcHBzL3Byb2QvbG1vZHVsZXMvc3lzX2NvcmUiLCIvYXBwcy9vcHMvcHJvZC9uY28vbW9kdWxlZmlsZXMvY29yZSIsIi9hcHBzL3Byb2QvbG1vZHVsZXMvY29yZSIsIi9vcHQvY3JheS9tb2R1bGVmaWxlcyIsIi9vcHQvbW9kdWxlZmlsZXMiLH0sWyJzeXN0ZW1CYXNlTVBBVEgiXT0iL3Vzci9zaGFyZS9tb2R1bGVzOi91c3Ivc2hhcmUvTW9kdWxlcy8k
+++ export _ModuleTable008_
+++ _ModuleTable009_=TU9EVUxFX1ZFUlNJT04vbW9kdWxlZmlsZXM6L3Vzci9zaGFyZS9tb2R1bGVzL21vZHVsZWZpbGVzOi91c3Ivc2hhcmUvbW9kdWxlZmlsZXMvTGludXg6L3Vzci9zaGFyZS9tb2R1bGVmaWxlcy9Db3JlOi91c3Ivc2hhcmUvbG1vZC9sbW9kL21vZHVsZWZpbGVzL0NvcmU6L29wdC9jcmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvY29yZTovb3B0L2NyYXkvcGUvbG1vZC9tb2R1bGVmaWxlcy9jcmF5cGUtdGFyZ2V0cy9kZWZhdWx0Oi9hcHBzL3Byb2QvbG1vZHVsZXMvc3lzX2NvcmU6L2FwcHMvb3BzL3Byb2QvbmNvL21vZHVsZWZpbGVzL2NvcmU6L2FwcHMvcHJvZC9sbW9kdWxlcy9jb3JlOi9vcHQvY3JheS9tb2R1bGVmaWxlczovb3B0L21vZHVsZWZpbGVzIix9
+++ export _ModuleTable009_
+++ _ModuleTable_Sz_=9
+++ export _ModuleTable_Sz_
+++ : -s sh
++ eval
++ cd /lfs/h1/ops/prod/packages/amsu_estimation.v1.3.0/sorc/../lib/sorc/gfstopack
++ make clean
+rm -rf llintp.o packsubs.o stndz.o ctor.o jdayi.o llintsp.o pstcal.o smooth.o stndz.o tdiff.o libgfspack.a
++ make
+ftn -O3 -fp-model precise -align all -c llintp.f  
+ftn -O3 -fp-model precise -align all -c packsubs.f  
+ftn -O3 -fp-model precise -align all -c stndz.f  
+ftn -O3 -fp-model precise -align all -c ctor.f  
+ftn -O3 -fp-model precise -align all -c jdayi.f  
+ftn -O3 -fp-model precise -align all -c llintsp.f  
+ftn -O3 -fp-model precise -align all -c pstcal.f  
+ftn -O3 -fp-model precise -align all -c smooth.f  
+ftn -O3 -fp-model precise -align all -c tdiff.f  
+ar ruv  libgfspack.a llintp.o packsubs.o stndz.o ctor.o jdayi.o llintsp.o pstcal.o smooth.o stndz.o tdiff.o
+ar: creating libgfspack.a
+a - llintp.o
+a - packsubs.o
+a - stndz.o
+a - ctor.o
+a - jdayi.o
+a - llintsp.o
+a - pstcal.o
+a - smooth.o
+a - stndz.o
+a - tdiff.o
+ranlib libgfspack.a 
++ make install
+cp -f libgfspack.a ../..
++ cd /lfs/h1/ops/prod/packages/amsu_estimation.v1.3.0/sorc
++ '[' '!' -d /lfs/h1/ops/prod/packages/amsu_estimation.v1.3.0/sorc/../exec ']'
+++ ls -d amsu_bin2pack.fd amsu_bintrans.fd amsu_compgfs.fd amsu_oparet.fd amsu_pickgfs.fd amsu_pullvar.fd amsu_readbufr.fd amsu_readcarq1.fd amsu_readcoordinate.fd amsu_tempretrieve.fd
++ for dir in `ls -d *.fd`
++ cd /lfs/h1/ops/prod/packages/amsu_estimation.v1.3.0/sorc/amsu_bin2pack.fd
++ make clean
+rm -f bin2pack_nhc.o
++ make
+ftn -O3 -fp-model precise -align all -o amsu_bin2pack bin2pack_nhc.f    ../../lib/libgfspack.a
+bin2pack_nhc.f(390): remark #8291: Recommended relationship between field width 'W' and the number of fractional digits 'D' in this edit descriptor is 'W>=D+7'.
+  220    format(1x,a1,1x,f6.1,2(1x,g15.9))
+------------------------------------^
+rm -f bin2pack_nhc.o
++ make install
+cp -f amsu_bin2pack ../../exec
++ for dir in `ls -d *.fd`
++ cd /lfs/h1/ops/prod/packages/amsu_estimation.v1.3.0/sorc/amsu_bintrans.fd
++ make clean
+rm -f bintrans_nhc.o
++ make
+ftn -O3 -fp-model precise -align all -o amsu_bintrans bintrans_nhc.f    
+rm -f bintrans_nhc.o
++ make install
+cp -f amsu_bintrans ../../exec 
++ for dir in `ls -d *.fd`
++ cd /lfs/h1/ops/prod/packages/amsu_estimation.v1.3.0/sorc/amsu_compgfs.fd
++ make clean
+rm -f compgfs_ibm.o
++ make
+ftn -O3 -fp-model precise -align all -o amsu_compgfs compgfs_ibm.f    
+rm -f compgfs_ibm.o
++ make install
+cp -f amsu_compgfs ../../exec
++ for dir in `ls -d *.fd`
++ cd /lfs/h1/ops/prod/packages/amsu_estimation.v1.3.0/sorc/amsu_oparet.fd
++ make clean
+rm -rf *.o 
++ make
+ftn -O3 -fp-model precise -align all -c oparet.f
+ftn -O3 -fp-model precise -align all -c opsubs.f
+opsubs.f(278): remark #8291: Recommended relationship between field width 'W' and the number of fractional digits 'D' in this edit descriptor is 'W>=D+7'.
+  202    format(1x,a1,1x,f6.1,2(1x,g15.9))
+------------------------------------^
+opsubs.f(611): remark #8291: Recommended relationship between field width 'W' and the number of fractional digits 'D' in this edit descriptor is 'W>=D+7'.
+  210 format(1x,a1,1x,f6.1,2(1x,g15.9))
+---------------------------------^
+opsubs.f(2008): warning #6379: The structure contains one or more misaligned fields.   [FX_REC]
+	type fx_rec
+-------------^
+opsubs.f(2085): warning #6379: The structure contains one or more misaligned fields.   [MIFIX]
+	type mifix
+-------------^
+ftn -O3 -fp-model precise -align all -c hstatic.f
+ftn -O3 -fp-model precise -align all -c sphfun.f
+ftn -O3 -fp-model precise -align all -c srread.f
+ftn -O3 -fp-model precise -align all -c bwcal.f
+ftn -O3 -fp-model precise -align all -c vradsubs.f
+ftn -O3 -fp-model precise -align all -c amsures.f
+ftn -O3 -fp-model precise -align all -c besubs.f
+besubs.f(190): remark #8291: Recommended relationship between field width 'W' and the number of fractional digits 'D' in this edit descriptor is 'W>=D+7'.
+  402            format(' CF:',e9.3,e9.3,e11.4,
+--------------------------------^
+besubs.f(190): remark #8291: Recommended relationship between field width 'W' and the number of fractional digits 'D' in this edit descriptor is 'W>=D+7'.
+  402            format(' CF:',e9.3,e9.3,e11.4,
+-------------------------------------^
+besubs.f(352): remark #8291: Recommended relationship between field width 'W' and the number of fractional digits 'D' in this edit descriptor is 'W>=D+7'.
+  402            format(' CF:',e9.3,e9.3,e11.4,
+--------------------------------^
+besubs.f(352): remark #8291: Recommended relationship between field width 'W' and the number of fractional digits 'D' in this edit descriptor is 'W>=D+7'.
+  402            format(' CF:',e9.3,e9.3,e11.4,
+-------------------------------------^
+ftn -O3 -fp-model precise -align all -c utils.f
+ftn -O3 -fp-model precise -align all -o amsu_oparet oparet.o opsubs.o hstatic.o sphfun.o srread.o bwcal.o vradsubs.o amsures.o besubs.o utils.o 
++ make install
+cp -f amsu_oparet  ../../exec/
++ for dir in `ls -d *.fd`
++ cd /lfs/h1/ops/prod/packages/amsu_estimation.v1.3.0/sorc/amsu_pickgfs.fd
++ make clean
+rm -rf *.o 
++ make
+ftn -O3 -fp-model precise -align all -c pickgfs.f	
+ftn -O3 -fp-model precise -align all -c utils.f	
+ftn -O3 -fp-model precise -align all -o amsu_pickgfs pickgfs.o utils.o 
++ make install
+cp -f amsu_pickgfs ../../exec
++ for dir in `ls -d *.fd`
++ cd /lfs/h1/ops/prod/packages/amsu_estimation.v1.3.0/sorc/amsu_pullvar.fd
++ make clean
+rm -f pullvar_nhc.o
++ make
+ftn -O3 -fp-model precise -align all -o amsu_pullvar pullvar_nhc.f    
+rm -f pullvar_nhc.o
++ make install
+cp -f amsu_pullvar ../../exec 
++ for dir in `ls -d *.fd`
++ cd /lfs/h1/ops/prod/packages/amsu_estimation.v1.3.0/sorc/amsu_readbufr.fd
++ make clean
+rm -f readbufr.o
++ make
+ftn -O3 -fp-model precise -align all -c  readbufr.f
+ftn -O3 -fp-model precise -align all -o amsu_readbufr readbufr.o /apps/ops/prod/libs/intel/19.1.3.304/bufr/11.5.0/lib64/libbufr_4.a
++ make install
+cp -f amsu_readbufr ../../exec/
++ for dir in `ls -d *.fd`
++ cd /lfs/h1/ops/prod/packages/amsu_estimation.v1.3.0/sorc/amsu_readcarq1.fd
++ make clean
+rm -f rcarq1.o
++ make
+ftn -O3 -fp-model precise -align all -c  rcarq1.f
+ftn  -O3 -fp-model precise -align all -o amsu_rcarq1 rcarq1.o
++ make install
+cp -f amsu_rcarq1 ../../exec/
++ for dir in `ls -d *.fd`
++ cd /lfs/h1/ops/prod/packages/amsu_estimation.v1.3.0/sorc/amsu_readcoordinate.fd
++ make clean
+rm -f read_COORDINATES.o
++ make
+ftn -O3 -fp-model precise -align all -c  read_COORDINATES.f
+ftn -O3 -fp-model precise -align all -o amsu_readcoordinate read_COORDINATES.o 
++ make install
+cp -f amsu_readcoordinate ../../exec/
++ for dir in `ls -d *.fd`
++ cd /lfs/h1/ops/prod/packages/amsu_estimation.v1.3.0/sorc/amsu_tempretrieve.fd
++ make clean
+rm -f *.o  
++ make
+ftn -O3 -fp-model precise -align all -c amsua_ret_n15.f 
+ftn   -c -o amsua_ret_n16.o amsua_ret_n16.f
+ftn -O3 -fp-model precise -align all -c amsua_ret_n18.f
+ftn -O3 -fp-model precise -align all -c amsua_ret_n19.f
+ftn -O3 -fp-model precise -align all -c amsua_ret_aqua.f
+ftn -O3 -fp-model precise -align all -c amsua_ret_metop2.f
+ftn -O3 -fp-model precise -align all -c distk.f
+ftn -O3 -fp-model precise -align all -c jdayi.f
+ftn -O3 -fp-model precise -align all -c md2jul.f
+ftn -O3 -fp-model precise -align all -c llintsp.f
+ftn -O3 -fp-model precise -align all -c temp_ret.f
+ftn -O3 -fp-model precise -align all -c landelev.f90
+ftn -O3 -fp-model precise -align all -o amsu_tempret amsua_ret_n15.o amsua_ret_n16.o amsua_ret_n18.o amsua_ret_n19.o amsua_ret_aqua.o amsua_ret_metop2.o distk.o jdayi.o md2jul.o llintsp.o temp_ret.o landelev.o 
++ make install
+cp -f amsu_tempret ../../exec/

@@ -1,0 +1,297 @@
+Readme Written by: A. Krautkramer 11/7/2002
+Updated: A. Krautkramer 12/2/2002
+
+--Program Summary----------------------------------------------------------------------------
+        
+		-Program: get_amsu.pl - Controls the process of getting AMSU ASCII data
+			- executable: get_amsu.pl
+			- language: Perl 5.6
+			- written: A. Krautkramer NHC
+			- usage: get_amsu.pl
+			- called by: command line or cronjob
+			- calls: read_adeck.sh, readbufr
+			- output: ascii files named : noaa15.out noaa16.out
+					  file in BUFR format
+					 
+		-Program: get_amsu_threads.pl - Controls the process of getting AMSU
+			data by using threads.  One thread is used per storms/query to the IBM.
+			- executable: get_amsu_threads.pl
+			- language: Perl 5.6
+			- written: A. Krautkramer NHC
+			- usage: get_amsu_threads.pl
+			- called by: command line or cronjob
+			- calls: read_adeck.sh, readbufr
+			- output: ascii files named : noaa15.out noaa16.out
+					  file in BUFR format
+					  
+		- Program: read_adeck.sh - read the A deck and find active storms
+            - executable:  read_adeck.sh
+            - language: shell script
+            - written:  John Knaff CIRA/CSU/RAMM
+            - usage: read_adeck.sh
+            - included libraries: none
+            - input: none
+            - output: COORDINATES file
+                      POSITIONS file
+            - called by: get_amsu.pl
+            - calls: rcarq1 - read the A deck and find active storms
+
+        - Program: rcarq1.f
+            - executable: rcarq1
+            - language: f77
+            - written: John Knaff CIRA/CSU/RAMM
+            - included libraries: none
+ 			- output: 
+			- called by: read_adeck.sh
+            - calls: none
+		
+		- Program: readbufr.f - convert a bufr file to an ascii file
+        	- executable: readbufr
+        	- language: f77
+        	- written: Jack Dostaleck CIRA/CSU/RAMM
+			- usage: readbufr
+        	- included libraries: libbufr.a
+			- called by: get_amsu.pl
+			- calls: BUFR functions in libbufr.a
+			- input: a bufr file named lbamua.ibm
+        	- output: ascii files named : noaa15.out noaa16.out
+			- compiled sucess: HP HP-UX 11.11
+							   IBM AIX 4.3
+		
+		-library: libbufr.a - utilities to read bufr files
+			- library: libbufr.f
+        	- language: f77
+        	- written: ? obtained from the NCEP IBM
+			- calls: none
+			- called by: readbufr.f
+			- compiled sucess: HP HP-UX 11.11
+							   IBM AIX 4.3
+							   
+		- Program: dumpjb_SAT1B.sh_cira - loadleveler script for the 
+										  purpose of extracting BURF data from
+										  the IBM
+			- language: unix shell
+			- written: Jack Dostaleck CIRA/CSU/RAMM
+			- usage: dumpjb_SAT1B.sh_cira
+			- calls: dumbjb - program to extract bufr data from NCEP IBM DB
+					 		  *The variable LALO must be set in the
+							  dumbjb_SAT1b.sh_cira for geographic clipping to
+							  be done.  The program dumbjb calls another program
+							  that will clip the data if something other than
+							  global is chosen (default=global).
+							  
+		- Program: dumpjb - extracts bufr data from the NCEP IBM Database
+			- language: unix shell
+			- written:  J. Woollen  w/nmc2
+			- path:  NCEP IBM: /nwprod/ush/
+			- usage: dumpjb  yyyymmddhh<.hh> hh<.hh> dgrp1 dgrp2 dgrp3 ... dgrpN
+					 example: /nwprod/ush/dumpjb 2002100811 6.0 1bamua
+			- input: yyyymmddhh<.hh> - center of time window for dump
+					 hh<.hh>         - radius of time window for dump
+					 dgrp1 			 - data group
+			  		 environment Var: LALO  -  geographical data filter 
+					 Refer to code for other options
+			- output: creates a directory IBM:/gpfstmp/$USER/1bamua.DTG.Radius
+					 1bamua.out - result message from the dumpjb run
+					 1bamua.ibm	- bufr file
+			- called by: dumpjb_SAT1B.sh_cira
+				
+	
+							  
+							  
+--Program Details-----------------------------------------------------------------------------
+
+	-Program: get_amsu.pl
+		- executable: get_amsu.pl
+		- language: Perl 5.6
+		- written: A. Krautkramer NHC
+		- usage: get_amsu.pl DTG GEOGRAHIC
+		- called by: command line or cronjob
+		- calls: read_adeck.sh, readbufr
+		- output: ascii files named : noaa15.out noaa16.out
+				  file in BUFR format
+				  
+	 	-Purpose:
+			Controls the process of getting BUFR data for currently
+			active storms from the NCEP IBM and converting the data
+			in BUFR format to ASCII format.  The ASCII data can then
+			be used as input for the CIRA/CIMSS AMSU intensity algorithms.
+			
+			1. In order to get the BUFR data from the NCEP IBM first the
+			get_amsu.pl script must somehow (via script or user input) 
+			get the date/time group and geographic coordinates that uniquely
+			define the subsection of BUFR data desired.  
+			
+			2. The DTG and coordinates are then used by get_amsu.pl to create 
+			a NCEP IBM loadleveler job which can be submitted and run on the
+			NCEP IBM.  The job is named dumpjb_SAT1B.sh_cira and is a shell 
+			script which calls programs on the NCEP IBM that obtain the BUFR 
+			data from the database of AMSU information.
+			
+			3. The script, dumpjb_SAT1B.sh_cira, is rcp'd to the NCEP IBM and 
+			is submitted to the NCEP IBM's loadleveler via an remsh command.
+			
+			4. The script repeatedly spins and waits for the expected BUFR files
+			(1bamua.ibm and 1bamua.out) to appear in the expected directories.
+			
+			5. When the resulting BUFR files are rcp'd back to the local
+			computer the code, readbufr, is called.  Two ascii files noaa15.dat 
+			and noaa16.dat are created from the BUFR file.
+			
+		-Output format: see notes under the program readbufr.f
+		
+	-Program: read_adeck.sh - read the A deck and find active storms
+            - executable:  read_adeck.sh
+            - language: shell script
+            - written:  John Knaff CIRA/CSU/RAMM
+            - usage: read_adeck.sh
+            - included libraries: none
+            - input: none
+            - output: COORDINATES file
+                      POSITIONS file
+            - called by: get_amsu.pl
+            - calls: rcarq1 - read the A deck and find active storms
+		
+		-Purpose: 
+			1. This program queries the system for the current date and time.
+			The time is then converted into a synoptic time (0, 6, 12, or 18).
+			
+			2. Using this DTG, the A deck files are read and searched for
+			currently (current or time minus 6 hours) active storms.
+			
+			3. Run the CIRA supplied A-deck decoder program to extract
+			the storms location and motion information for current storms.
+			Place the storm location and motion information into a file named
+			COORDINATES.
+				
+		-Output:	
+			- Format --
+			inum - storm number - keeps track of multiple systems
+			y2kyy - 4 digit year
+			mm - two digit month (1-12)
+			dd - day of the month (0-31)
+			y2kyy - 4 digit year
+			ijul - Julian day
+			hh - hour of the day
+			lat0 - Latitude position at t=0 hrs
+            lon0 - Longitude position at t= 0 hrs
+			lat12 - Latitude position at t=12 hrs
+			lon12 - Longitude position at t=12 hrs
+            dir0 - Storm heading at t= 0 hrs
+			spd0 - Storm speed at t= 0 hrs
+			vtm0 - Max intensity at t= 0 hrs
+			cbas - storm basin 
+			istnum - storm number 
+			(y2kyy - 2002) - two digit year number
+			stname - storm name
+
+			- Example line from file COORDINATES --	
+			01 20020920 200226306   21.1  -83.0   20.4  -81.7 300 008 080 al1002  ISIDORE
+			
+			- Example line from file decoded --
+			inum=01 y2kyymmdd=20020920 y2kyyijulhh=200226306 lat0=21.1 lon0=-83.0
+			lat12=20.4 lon12=-81.7 dir0=300 spd0=008 vtm0=080 
+			cbasistnum(y2kyy-2002)= al1002 	stname=ISIDORE	
+			
+	-Program: rcarq1.f - takes carq records and reformats them
+		  - executable: rcarq1
+          - language: f77
+          - written: John Knaff CIRA/CSU/RAMM
+          - included libraries: none
+		  - called by: read_adeck.sh
+          - calls: none
+		  - input: carq records
+		  - output: records in a specific format (see output format
+		  			for read_adeck.sh)
+	
+	-Program: readbufr.f
+		- executable: readbufr
+        - language: f77
+        - written: Jack Dostaleck CIRA/CSU/RAMM
+        - included libraries: libbufr.a
+        - input: a bufr file named lbamua.ibm
+        - output: ascii files named : noaa15.out noaa16.out
+
+		-Purpose:
+			Convert a bufr file named lbamua.ibm into two ascii files;
+			noaa15.out and noaa16.out.
+
+		-Compiling:
+			The program readbufr.f includes calls to subroutines contained
+			in the library libbufr.a.  Specifically the program uses the
+			following subroutines:
+
+        		openbf
+        		readmg
+        		readsb
+        		ufbseq
+        		closbf
+
+			In order to compile readbufr.f the libbufr.a library must be included
+			so the appropriate code (listed above) can be included when the 
+			executable is linked.  For instuctions on how to compile the libbufr.a 
+			see the program instructions below for libbufr.a.
+
+			f90 -oreadbufr readbufr.f -L/home/akrautkr/programs/amsu/lib -lbufr 
+	 	
+				-or try-
+				
+			f90 -L/home/akrautkr/programs/amsu/lib -lbufr -oreadbufr readbufr.f
+		
+		-Output Ascii File Format
+		
+			- Format --
+			date,time,lat,lon,sat,sensor,scanele,landsea,satzen,solzen,elev,sathght,(tb(n),n=1,15)
+
+			date - YearMonthDay (int)
+			time - HourMinuteSecond (int)
+			lat - longitude (real)
+			lon - latitude (real)
+			sat - satellite (int)
+			sensor - sensor (int)   
+					 (if sensor=570 then nchan=15, if sensor=547 then nchan=5)
+			scanele - scan element (int)
+			landsea - land sea flag (int)
+			satzen - satellite zenith angle (real)
+			solzen - solar zenith angle (real)
+			elev - surface elevation (int)
+			sathght - satellite height (int)
+			tb(15) - brightness temperature (real) 
+					(if any brightness temp = 1.0e11 then set tb(n)=-99.0)
+
+			- Example line from file noaa15.out --
+			20021008 110044   32.580  -60.700  15  570   5  1  40.320   68.430  0  822000
+			222.37  197.70  246.66  262.04  252.04  234.03  223.48  215.30  210.93  215.65  
+			-99.00  232.08  241.01  -99.00  256.87
+
+			- Example line decoded --
+			date = 20021008, time=110044, lat=32.580, lon=-60.700, sat=15, sensor=570, scanele=5, 
+			landsea=1, satzen=40.320, solzen=68.430, elev=0, sathght=8220, 
+			tb =  {222.37  197.70  246.66  262.04  252.04  234.03  223.48  215.30  210.93  215.65  
+			-99.00  232.08  241.01  -99.00  256.87}
+		
+
+
+	-Library  - library: libbufr.f
+    	      - language: f77
+        	  - written: ? obtained from the NCEP IBM
+
+		-Purpose
+			Subroutines for manipulating files in BUFR format.
+
+		-Compiling
+			The library libbufr.a is made up of many different subroutines that
+			manipulate files in BUFR format.
+
+			In order to create a fortran library first the all of the separate subroutines
+			must first be compiled in object code (f90 -c *.f).  Then all of the object
+			files are collected into one file called a library.     
+
+	  		f90 -c *.f
+       		ar rcv libbufr.a *.o
+       		ranlib libbufr.a 
+	
+	
+	
+
+

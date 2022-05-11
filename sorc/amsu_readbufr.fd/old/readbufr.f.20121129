@@ -1,0 +1,179 @@
+      PROGRAM READBUFR
+c=======================================================================      
+c     This program reads amsu data in bufr format and outputs brightness
+c     temperatures and other information for use in tropical storm work.
+c=======================================================================
+c     Progress:
+c     04/23/02 - Programming begun by Jack Dostalek CIRA/CSU/RAMM
+c     04/29/02 - Switched to helene, ulysses has trouble with readsb
+c     05/29/02 - Copy put on asp.ncep.noaa.gov
+c     06/19/02 - New output format made
+c     12/03/02 - Updated for NOAA-17
+c     05/27/04 - Changed 1bamua.ibm to amuata.ibm for antenna temperatures
+c     12/12/05 - Updated for NOAA-18
+c     03/15/07 - Updated bufrlib call from UFBSEQ to combination of UFBINT
+c		 and UFBREP to prevent dependency on order of elements 
+c	         in a reprot (subset sequence) 
+c=======================================================================
+c     Variables:
+      character*2 cio                           !Input/output flag for openbf
+      character*8 csubset
+      character*20 cbufrin			!Input bufr file name
+      integer lubfr				!Logical unit number for bufr file
+      integer iret
+      integer lundx
+      integer idate
+
+cvvvv  Update 3/15/2007	
+c     real*8 r8arr(46,1)
+      real*8 arr_date(6)			! array for the date info in each report
+      real*8 arr_lalo(2)			! array holding lat/lon infor for each report
+      real*8 arr_othr(10)			! array holding other single-level infor for each report
+      real*8 arr_brit(3,15)  		        ! array holding 15 channels of brightness temp and other 
+						! info for each report
+c^^^^  Update 3/15/2007
+
+      integer yr				!Year
+      integer mo				!Month
+      integer dy				!Day
+      integer hr				!Hour
+      integer mi				!Minute
+      integer se				!Second
+      real lat					!Latitude
+      real lon					!Longitude
+      integer sat				!Satellite
+      integer sensor			        !Sensor
+      integer scanele				!Scan element
+      integer landsea				!Land sea flag
+      real satzen				!Satellite zenith angle
+      real solzen				!Solar zenith angle
+      integer elev				!Surface elevation
+      integer sathght				!Satellite height
+      real tb(15)				!Brightness temperatures
+      integer date
+      integer time
+c=======================================================================
+c     Data statements:
+      data lubfr,luout15,luout16,luout17,luout18 /11,15,16,17,18/
+      data cbufrin,cio /'amuata.ibm','IN'/
+c=======================================================================      
+c     Open output file
+c     -------------  
+      open(unit=luout15,file='noaa15.out',status='replace')
+      open(unit=luout16,file='noaa16.out',status='replace')
+      open(unit=luout17,file='noaa17.out',status='replace')
+      open(unit=luout18,file='noaa18.out',status='replace')
+
+c     Open bufr file
+c     --------------
+      mxmn=46
+      mxlv=1
+      lundx=lubfr
+      open(unit=lubfr,file=cbufrin,status='old',form='unformatted')
+
+cvvvv  Update 3/15/2007
+      call datelen(10)
+c^^^^  Update 3/15/2007
+
+      call openbf(lubfr,cio,lundx)             
+10    call readmg(lubfr,csubset,idate,iret)
+      if(iret.eq.0) then
+30      call readsb(lubfr,iretsb)
+        if(iretsb.eq.0) then
+
+cvvvv
+c     3/15/2007 - Change made due to new elements added to 
+c           the NCEP IBM AMSU bufr database on 2/27/2007
+c     		UFBSEQ is a deprecated.
+c		UFBREP pulls out standard replicated values.
+c		These are more flexible and do not depend on the order 
+c		of elemetns in table d.  They point to table b.
+c     	 	UFBINT  pulls out the single replicated values.
+c          call ufbseq(lubfr,r8arr,mxmn,mxlv,nlv,csubset)
+	  call ufbint(lubfr,arr_date,6,1,iret, 
+     &		'YEAR MNTH DAYS HOUR MINU SECO')
+	  call ufbint(lubfr,arr_lalo, 2,1,ret, 'CLAT CLON')
+	  call ufbint(lubfr,arr_othr,10,1,iret,
+     &         'SAID SIID FOVN LSQL SAZA SOZA HOLS HMSL SOLAZI BEARAZ')
+	  call ufbrep(lubfr, arr_brit,3,15,nlv,'CHNM TMBR CSTC')
+
+c	arr_date, arr_lalo, arr_othr &arr_brit are all real arrays, but
+c 	not all values are best output as real values.  So here I will do
+c	some modifications before I write the data out.  This also will show 
+c	what the values in the arrays are.
+          yr=nint(arr_date(1))
+          mo=nint(arr_date(2))
+          dy=nint(arr_date(3))
+          hr=nint(arr_date(4))
+          mi=nint(arr_date(5))
+          se=nint(arr_date(6))
+          lat=arr_lalo(1)
+          lon=arr_lalo(2)
+          if(arr_othr(1).eq.206) sat=15
+          if(arr_othr(1).eq.207) sat=16
+          if(arr_othr(1).eq.208) sat=17
+          if(arr_othr(1).eq.209) sat=18
+          sensor=nint(arr_othr(2))
+c^^^^
+          if(sensor.eq.570) nchan=15
+          if(sensor.eq.547) nchan=5
+cvvvv
+	  if(nlv.ne.nchan) stop 99 !PROBLEM !!!!
+          scanele=nint(arr_othr(3))
+          landsea=nint(arr_othr(4))
+          satzen=arr_othr(5)
+          solzen=arr_othr(6)
+          elev=arr_othr(7)
+          sathght=arr_othr(8)
+c     The values of arr_brit are the channel numbers,  
+c     brightness temperatures and cold space temprature correction, 
+c     i.e., 1 tb1 2 tb2. I only need the
+c     brightness temperatures, not the channel numbers themselves          
+c     nor the cold space temperature correctins.
+          do 40 n=1,nchan
+            tb(n)=arr_brit(2,n)
+            if(tb(n).eq.1.0e11) tb(n)=-99.0
+40        continue          
+c^^^^
+          date=yr*10000+mo*100+dy
+          time=hr*10000+mi*100+se
+          if(sat.eq.15) then
+            write(luout15,50) date,time,lat,lon,sat,sensor,scanele,
+     &      landsea,satzen,solzen,elev,sathght,(tb(n),n=1,15)     
+          elseif(sat.eq.16) then
+            write(luout16,50) date,time,lat,lon,sat,sensor,scanele,
+     &      landsea,satzen,solzen,elev,sathght,(tb(n),n=1,15)
+          elseif(sat.eq.17) then
+c
+c            NOAA-17 does not have an AMSU-A anymore.
+c
+c            write(luout17,50) date,time,lat,lon,sat,sensor,scanele,
+c     &      landsea,satzen,solzen,elev,sathght,(tb(n),n=1,15)     
+          elseif(sat.eq.18) then
+            write(luout18,50) date,time,lat,lon,sat,sensor,scanele,
+     &      landsea,satzen,solzen,elev,sathght,(tb(n),n=1,15)     
+          endif
+cvvvv
+50        format(i8,1x,i6.6,1x,2(f8.3,1x),1x,i2,2x,i3,2x,i2,2x,i1,2x,
+     &           f8.3,1x,f8.3,1x,i5,2x,i6,2x,15(f6.2,2x))          
+c^^^^
+
+
+          
+       
+          goto 30                           
+        else
+          goto 10
+        endif    
+      endif              
+     
+c     Close files
+c     -----------
+      call closbf(lubfr)
+      close(unit=luout15)
+      close(unit=luout16)
+      close(unit=luout17)
+      close(unit=luout18)
+   
+      stop
+      end

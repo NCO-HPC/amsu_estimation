@@ -1,0 +1,6 @@
+export amsu_estimation_ver=v1.2.0
+# Will remove the following two comments if confirm the new versions work fine - 05/09
+# JY export obsproc_dump_ver=v3.1.0
+# JY export bufr_dumplist_ver=v1.0.0
+export obsproc_dump_ver=v3.3.0
+export bufr_dumplist_ver=v1.4.0

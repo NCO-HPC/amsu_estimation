@@ -1,0 +1,171 @@
+#==============================================================================
+#
+# Makefile for  Performs the temperature retrieval using ASCII formated data 
+#		from the Advanced Microwave Sounding Unit on the GOES satellite
+#		platform.
+#
+# This version is for the HPUX, F90
+#
+# Notes: make        	 compilies the one executables (temp_ret.exe)
+#   	 make clean  	 removes the object files and executables 
+#   	 make install	 places the *.exe files in the ../bin directory
+#
+# Executables:	temp_ret.exe
+#
+# Written by J. Knaff and M. DeMaria, May 2003
+# Modified by: A. Krautkramer 5/19/03
+#		Added comments and standardized makefile
+# Modified by: ARK 2/10/2005
+#		Compile on the IBM
+# Modified by: J. Knaff 3/22/2011
+#               Added routines landelev.f90 and llintsp.f to the Makefile.
+#               The subroutine is necessary for Aqua AMSU retrievals, which
+#               do not have the land/sea or elevation information that
+#               is needed for the statistical temperature retrievals.
+#
+#               Added SRCF90 as a variable name to the makefile.
+#
+#               Added amsua_ret_aqua.f amsua_ret_metop2.f and
+#                     amsua_ret_n19.f to the makefile.
+#
+# Modified by: ARK 11/23/2012 WCOSS
+# Modified by: ARK 12/12/12 Metop 
+#
+#==============================================================================
+
+#-----------------------------------------------------------------------------
+#                          -- Define default macros --
+#-----------------------------------------------------------------------------
+
+# --------------------
+# Define default shell
+# --------------------
+
+SHELL = /bin/sh
+
+CP	= cp -f
+
+RM	= rm -f
+
+#-----------------------------------------------------------------------------
+#                       -- Define file lists --
+#-----------------------------------------------------------------------------
+
+# ---------
+# Libraries
+# ---------
+
+FLIBS	= 
+
+# --------
+# Includes
+# --------
+
+FINCS = -vaxlib
+
+# ------------
+# Source/Object/Executable files
+# ------------
+
+SRCF	= amsua_ret_n15.f amsua_ret_n16.f amsua_ret_n18.f amsua_ret_n19.f amsua_ret_aqua.f amsua_ret_metop2.f distk.f jdayi.f md2jul.f llintsp.f temp_ret.f 
+OBSF	= $(SRCF:.f=.o)
+
+SRCF90 = landelev.f90
+OBSF90 = landelev.o
+
+SRC     = $(SRCF) $(SRCF90)
+OBS     = $(OBSF) $(OBSF90)
+
+CMD	= amsu_tempret
+
+#-----------------------------------------------------------------------------
+#                          -- Define dependecies --
+#-----------------------------------------------------------------------------
+
+# ------------------
+# Compiler
+# ------------------
+
+#... HP F90 Compiler
+#FC	= f90
+
+#... Linux PG F90 Compiler
+#FC	=pgf90
+
+#... IBM AIX
+#FC = xlf_r
+#FC = ncepxlf
+
+#... WCOSS
+FC = ifort
+FC90 = ifort
+
+
+# -----------------------------
+# Compiler Flags 
+# -----------------------------
+
+DEBUG_FLAGS=-g
+#COMMON_FLAGS=$(DEBUG_FLAGS) +O2 -DA2.0 	#HP
+#COMMON_FLAGS=$(DEBUG_FLAGS) -DA2.0	#Linux
+COMMON_FLAGS=$(DEBUG_FLAGS) -align all		#WCOSS
+
+# ------------ 
+# Common Flags 
+# ------------
+
+FC_FLAGS=$(COMMON_FLAGS) -c
+FL_FLAGS=$(COMMON_FLAGS) -o
+
+# -------------
+# Make program
+# ------------
+
+all: $(CMD) 
+
+
+#-------------
+# make the executable
+#---------------
+
+$(CMD): $(OBS)
+	$(FC) $(FL_FLAGS) $@ $(OBS) $(FLIBS)
+amsua_ret_n15.o: amsua_ret_n15.f
+	$(FC) $(FC_FLAGS) amsua_ret_n15.f 
+msua_ret_n16.o: amsua_ret_n16.f
+	$(FC) $(FC_FLAGS) amsua_ret_n16.f
+amsua_ret_n18.o: amsua_ret_n18.f
+	$(FC) $(FC_FLAGS) amsua_ret_n18.f
+amsua_ret_n19.o: amsua_ret_n19.f
+	$(FC) $(FC_FLAGS) amsua_ret_n19.f
+amsua_ret_aqua.o: amsua_ret_aqua.f
+	$(FC) $(FC_FLAGS) amsua_ret_aqua.f
+amsua_ret_metop2.o: amsua_ret_metop2.f
+	$(FC) $(FC_FLAGS) amsua_ret_metop2.f
+distk.o: distk.f
+	$(FC) $(FC_FLAGS) distk.f
+jdayi.o: jdayi.f
+	$(FC) $(FC_FLAGS) jdayi.f
+md2jul.o: md2jul.f
+	$(FC) $(FC_FLAGS) md2jul.f
+llintsp.o: llintsp.f
+	$(FC) $(FC_FLAGS) llintsp.f
+temp_ret.o: temp_ret.f
+	$(FC) $(FC_FLAGS) temp_ret.f
+$(OBSF90): ${SRCF90}
+	${FC90} $(FC_FLAGS) $<
+
+#%.o:%.f
+#	$(FC) $(FC_FLAGS) $<
+#$(OBSF):$(SRCF)
+#	$(FC) $(FC_FLAGS) $<
+#$(OBSF90): ${SRCF90}
+#	${FC90} $(FC_FLAGS) $<
+#
+	
+# --------
+# Clean up
+# --------
+	
+clean:	
+	$(RM) *.o $(EXE) 

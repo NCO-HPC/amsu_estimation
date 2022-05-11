@@ -1,0 +1,87 @@
+#!/bin/bash
+
+########################################
+# Preliminary data setup step
+########################################
+
+date
+export PS4=' $SECONDS + ' 
+set -x
+
+###########################################################
+# obtain unique process id (pid) and make temp directories
+###########################################################
+export pid=$$
+export jobid=${jobid:-${job}.$pid}
+export DATA=${DATA:-$DATAROOT/${jobid}}
+
+mkdir $DATA
+cd $DATA
+
+####################################
+# File To Log Msgs
+####################################
+#export jlogfile=${jlogfile:-$DATA/jlogfile.${jobid}}
+
+####################################
+# Determine Job Output Name on System
+####################################
+export pgmout="OUTPUT.$pid"
+
+export CYC=$cyc
+export cycle=t${cyc}z 
+
+###############################
+# Specify NET and RUN name
+###############################
+#export NET=nhc
+#export RUN=amsu
+export NET=amsu_estimation
+export RUN=amsu_estimation
+
+##################################################
+# SAVEGES  - Copy Files From TMPDIR to $GESdir
+# SENDCOM  - Copy Files From TMPDIR to $COMOUT
+# SENDDBN  - Issue DBNet Client Calls
+# RERUN    - Rerun fcst from beginning (default no)
+##################################################
+export SENDCOM=${SENDCOM:-YES}
+export SENDDBN=${SENDDBN:-YES}
+
+#export HOMEnhc=${PACKAGEHOME:-$PACKAGEROOT/amsu_estimation.${amsu_estimation_ver}}
+export HOMEnhc=${PACKAGEHOME:-$HOMEamsu_estimation}
+export EXECnhc=${EXECnhc:-$HOMEnhc/exec}
+export FIXnhc=${FIXnhc:-$HOMEnhc/fix}
+export PARMnhc=${PARMnhc:-$HOMEnhc/parm}
+export USHnhc=${USHnhc:-$HOMEnhc/ush}
+
+export LALO=-04032045081
+export TANK=${TANK:-${DCOMROOT}}
+
+###################################
+# Set up the UTILITIES
+###################################
+# Run setpdy and initialize PDY variables
+setpdy.sh
+. ./PDY
+
+export COM=${COM:-$(compath.py $NET/${amsu_estimation_ver})}
+export COMIN=${COMIN:-$(compath.py ${NET}/${amsu_estimation_ver})/${RUN}.${PDY}}
+export COMOUT=${COMOUT:-$(compath.py -o ${NET}/${amsu_estimation_ver})/${RUN}.${PDY}}
+export COMINgfs=${COMINgfs:-$(compath.py ${envir}/com/gfs/${gfs_ver})}
+
+export COMNHC=${COMNHC:-${DCOMROOT}/nhc/atcf-noaa}
+export COMJTWC=${COMJTWC:-${DCOMROOT}/nhc/atcf-navy}
+
+mkdir -p -m 775 $COMOUT
+
+env
+
+#${PACKAGEHOME}/scripts/examsu_estimation.sh
+${HOMEamsu_estimation}/scripts/examsu_estimation.sh
+
+if [ "${KEEPDATA}" != YES ]; then
+   rm -rf $DATA
+fi
+
+date

@@ -1,0 +1,153 @@
+#==============================================================================
+#
+# Makefile for libavnutils.a 
+#
+# Purpose: 	Compiles the f90 scripts and places the object code
+#		into a library called libavnutils.a.  This library
+#		is then used to compile the source code that converts
+#		gfs grib files into pack files for the CIRA AMSU algorightm.
+#
+# Dependacies:   None
+#
+# Notes: make clean   -- clean up
+#        make         -- build library
+#        make install -- install lib into ../../lib
+#
+# Library name:  libavnutils.a 
+#
+# Modification History: Written by: C A Sisko 04/21/2003
+#			Modified by: ARK to run on the IBM 02/10/2005
+#
+#==============================================================================
+
+#-----------------------------------------------------------------------------
+#                          -- Define default macros --
+#-----------------------------------------------------------------------------
+
+# --------------------
+# Define default shell
+# --------------------
+
+SHELL = /bin/sh
+
+CP	= cp -f
+
+RM	= rm -rf
+
+LOC	= ../..
+
+#-----------------------------------------------------------------------------
+#                       -- Define file lists --
+#-----------------------------------------------------------------------------
+
+# ---------
+# Libraries 
+# ---------
+LIBS	=
+
+# --------
+# Includes
+# --------
+INCS	=
+
+# ---------------------
+# Object / Source files
+# ---------------------
+
+SRC_FILES = llintp.o packsubs.o stndz.o ctor.o  jdayi.o llintsp.o  pstcal.o  smooth.o  stndz.o  tdiff.o
+
+OBJ_FILES = $(SRC_FILES:.f=.o)
+
+# ---------------
+# Executable File
+# ---------------
+
+EXE_FILE =
+
+#-----------------------------------------------------------------------------
+#                          -- Define dependecies --
+#-----------------------------------------------------------------------------
+
+# ------------------
+# Compiler / Linker
+# ------------------
+
+#... IBM Compiler ...
+#FC = xlf_r
+#FL = xlf_r
+
+#FC = ncepxlf
+#FL = ncepxlf
+
+#... PGI Linux Compiler ...
+#FC = pgf90
+#FL = pgf90
+
+#... HP Compiler ...
+#FC = f90 
+#FL = f90
+
+FC = ifort
+FL = ifort
+
+# -----------------------------
+# Compiler Flags / Linker Flags
+# -----------------------------
+
+#... Compiler Options ... 
+#DEBUG_FLAGS=-g
+#COMMON_FLAGS=$(DEBUG_FLAGS)  +DAportable	# HPUX
+#COMMON_FLAGS=$(DEBUG_FLAGS) -g77libs -shared	# Linux
+#COMMON_FLAGS=$(DEBUG_FLAGS) -bshared		# IBM
+COMMON_FLAGS=-O3 -fp-model precise -align all	# WCOSS
+
+
+# ------------ 
+# Common Flags 
+# ------------
+
+FC_FLAGS=$(COMMON_FLAGS) -c
+FL_FLAGS=$(COMMON_FLAGS) -o
+
+# ---------------------
+# Archive (lib) Options
+# ---------------------
+
+#AR_OPTS = ruv #... HP Library Creation
+#AR_OPTS = ruv -X 64  #... Linux Library Creation
+#AR_OPTS = -v -q -X 64 #... IBM Library Creation
+AR_OPTS = ruv #...WCOSS
+
+AR=ar $(AR_OPTS)
+
+LIBNAME=libgfspack.a
+
+# -------------
+# Make program
+# -------------
+
+$(LIBNAME): $(OBJ_FILES) 
+	$(AR) $@ $(OBJ_FILES)
+	ranlib $@ 
+
+# --------
+# Clean up
+# --------
+
+clean:
+	$(RM) $(OBJ_FILES) $(LIBNAME)
+
+# ---------------
+# Install Library 
+# ---------------
+
+install: $(LIBNAME)
+	$(CP) $(LIBNAME) $(LOC)
+
+#-----------------------------------------------------------------------------
+#                          -- Define default rules --
+#-----------------------------------------------------------------------------
+
+.SUFFIXES: .f .o
+.f.o:
+	$(FC) $(FC_FLAGS) $< $(LIBS) $(INCS)

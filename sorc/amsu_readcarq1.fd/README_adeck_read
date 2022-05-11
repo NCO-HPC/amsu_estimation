@@ -1,0 +1,73 @@
+Readme Written by: A. Krautkramer 12/2/2002
+
+---Programs
+		- program: read_adeck.sh - read the A deck and find active storms
+        	- executable:  read_adeck.sh
+        	- language: shell script
+        	- written:  John Knaff CIRA/CSU/RAMM
+			- usage: read_adeck.sh
+        	- included libraries: none
+        	- input: none
+        	- output: COORDINATES file
+					  POSITIONS file
+			- called by: command line
+			- calls: rcarq1 - read the A deck and find active storms  
+					 read_COORDINATES - 
+							   
+        - program: rcarq1.f
+		    - purpose: This program reads ATCF A deck formatted records and searches for storms.
+       				   If the program finds 0 and -12 CARQ positions for the same storm then
+   					   it calculates the julian day of the storm and outputs the pertainent storm
+   					   information.  A storm can be uniquely identified by the storm basin and
+   					   storm number.
+        	- executable: rcarq1
+        	- language: f77
+        	- written: John Knaff CIRA/CSU/RAMM
+        	- included libraries: none
+        	- input: none
+        	- output: COORDINATES file
+					  
+					  
+		- program: read_COORDINATES.f	
+		    - purpose:  This program reads information from the COORDINATES file and
+				        outputs the file dumpjb.in_##.  This information will 
+						be used to sectorize the amsu data and create the 
+						IBM job dumpjb_SAT1B.sh_cira.
+			- executable: read_COORDINATES
+			- language: f77
+			- written: Jack Dostalek CIRA
+			- included libraries: none
+			- input: COORDINATES file
+			- output: dumpjb.in_##
+		
+	  
+---Purpose---
+Queries the computer system for the date/time and converts the time into
+
+---Format---
+
+		- COORDINATES FILE Example
+		
+		  01 20030324 200308312   22.4  -44.9   21.7  -43.2 295 009 025 al0703  INVEST
+		  
+		  		20030324 - Date of the storm in YYYYMMDD
+				200308312 - Date of the storm in YYYYJJJHH
+				22.4 - Storm lat (Adeck CARQ 0hr)
+				-44.9 - Storm lon (Adeck CARQ 0hr)
+				21.7 - Storm lat -12 hour (Adeck CARQ -12hour)
+				-43.2 - Storm lon -12 hour (Adeck CARQ -12hour)
+				295 - Storm Direction (Adeck CARQ 0hr)
+				009 - Storm Speed in knts (Adeck CARQ 0hr)
+				025 - Intensity of the storm in knts (Adeck CARQ 0hr)
+				al0703 - Storm name BB##YY
+				INVEST - Name of the storm (Adeck CARQ 0hr)
+				
+		 - DUMPJB.IN_01 File Example	
+			
+			2003032412
+			012032035055
+			al072003
+			
+				2003032412 - YYYYMMDDHH of current time period
+				012032035055 - lat/lon window
+				al072003 - basin storm number and YYYY
